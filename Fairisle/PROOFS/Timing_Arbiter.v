@@ -74,7 +74,7 @@ Section Timing_Arbiter_Proof.
    P_Timing (fst e) (Trans_Timing e s).
  unfold P_Timing in |- *.
  intros e s; elim e; clear e; intros fs act.
- elim (bool_dec fs); intros H_fs.
+ elim (Lib_Bool.bool_dec fs); intros H_fs.
  rewrite H_fs; simpl in |- *.
  case s; case (Ackor act); simpl in |- *; auto.
  rewrite H_fs; simpl in |- *; auto.
