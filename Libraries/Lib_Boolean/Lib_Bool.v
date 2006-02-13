@@ -105,7 +105,7 @@ Unset Strict Implicit.
 
 
 Lemma no_true_false : forall b : bool, b = false -> b <> true.
-simple induction b; auto.
+simple induction b; auto with bool.
 Qed.
 Hint Immediate no_true_false.
 
