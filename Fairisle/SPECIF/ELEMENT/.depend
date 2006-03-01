@@ -1,0 +1,21 @@
+Arbitration.vo: Arbitration.v ElementComb.vo
+Arbitration.vi: Arbitration.v ElementComb.vo
+Base_Behaviour.vo: Base_Behaviour.v
+Base_Behaviour.vi: Base_Behaviour.v
+ElementComb.vo: ElementComb.v
+ElementComb.vi: ElementComb.v
+ElementComb_Behaviour.vo: ElementComb_Behaviour.v
+ElementComb_Behaviour.vi: ElementComb_Behaviour.v
+ElementTemp.vo: ElementTemp.v ElementComb.vo
+ElementTemp.vi: ElementTemp.v ElementComb.vo
+ElementTemp_Behaviour.vo: ElementTemp_Behaviour.v ElementComb_Behaviour.vo
+ElementTemp_Behaviour.vi: ElementTemp_Behaviour.v ElementComb_Behaviour.vo
+Tools_Inf.vo: Tools_Inf.v
+Tools_Inf.vi: Tools_Inf.v
+Arbitration.html: Arbitration.v ElementComb.html
+Base_Behaviour.html: Base_Behaviour.v
+ElementComb.html: ElementComb.v
+ElementComb_Behaviour.html: ElementComb_Behaviour.v
+ElementTemp.html: ElementTemp.v ElementComb.html
+ElementTemp_Behaviour.html: ElementTemp_Behaviour.v ElementComb_Behaviour.html
+Tools_Inf.html: Tools_Inf.v

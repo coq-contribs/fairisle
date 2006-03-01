@@ -1,0 +1,17 @@
+This library, developped by S.Coupet-Grimal and L.Jakubiec-Jamet from LIF, investigates
+how to take advantage of the particular features of the Calculus of Inductive Constructions
+in the framework of hardware verification. 
+
+Co-inductive types are used to model the temporal aspects of sequential synchronous devices. 
+Moore and Mealy automata are co-inductively axiomatized and are used to uniformly represent  
+both the structures and the behaviours of circuits. This leads to clear, general and elegant 
+proof processes. Our approach is hierarchical and modular. It is based
+on a general lemma which states an equivalence between the two streams computed from automaton
+that represents structure and the one that represents behaviour.
+
+Moreover, we have introduced dependent types whenever they contributed to a better reliability of the 
+specifications and we have shown that an heavy use of this kind of encoding  was feasible in practice.
+
+We apply this methodology to a real circuit, the Fairisle ATM 4x4 Switch Element.
+
+This work has been published and can be founded at the following URL : http://www.cmi.univ-mrs.fr/~solange/publications.

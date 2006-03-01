@@ -1,0 +1,42 @@
+Arbiter4_Proof.vo: Arbiter4_Proof.v Arbiter4_Specif.vo Invariant_a4_S.vo
+Arbiter4_Proof.vi: Arbiter4_Proof.v Arbiter4_Specif.vo Invariant_a4_S.vo
+Arbiter4_Proof_lemmas.vo: Arbiter4_Proof_lemmas.v Lemmas_Comb_Behaviour.vo
+Arbiter4_Proof_lemmas.vi: Arbiter4_Proof_lemmas.v Lemmas_Comb_Behaviour.vo
+Arbiter4_Specif.vo: Arbiter4_Specif.v Arbiter4_Proof_lemmas.vo
+Arbiter4_Specif.vi: Arbiter4_Specif.v Arbiter4_Proof_lemmas.vo
+Arbitration_Proof.vo: Arbitration_Proof.v Arbitration_Specif.vo Arbitration_beh_sc.vo Timing_Arbiter.vo
+Arbitration_Proof.vi: Arbitration_Proof.v Arbitration_Specif.vo Arbitration_beh_sc.vo Timing_Arbiter.vo
+Arbitration_Specif.vo: Arbitration_Specif.v Arbiter4_Specif.vo PriorityDecode_Proof.vo Timing_Proof.vo Timing_Arbiter.vo
+Arbitration_Specif.vi: Arbitration_Specif.v Arbiter4_Specif.vo PriorityDecode_Proof.vo Timing_Proof.vo Timing_Arbiter.vo
+Arbitration_beh_sc.vo: Arbitration_beh_sc.v PriorityDecode_Proof.vo Timing_Proof.vo Arbiter4_Specif.vo
+Arbitration_beh_sc.vi: Arbitration_beh_sc.v PriorityDecode_Proof.vo Timing_Proof.vo Arbiter4_Specif.vo
+Behaviour_Struct_lemmas.vo: Behaviour_Struct_lemmas.v Arbiter4_Proof.vo Timing_Proof.vo PriorityDecode_Proof.vo
+Behaviour_Struct_lemmas.vi: Behaviour_Struct_lemmas.v Arbiter4_Proof.vo Timing_Proof.vo PriorityDecode_Proof.vo
+Equiv_Struct_Beh_Arbitration.vo: Equiv_Struct_Beh_Arbitration.v Timing_Arbiter.vo Arbitration_beh_sc.vo Arbiter4_Proof.vo Arbitration_Proof.vo Lemmas_for_Arbitration.vo
+Equiv_Struct_Beh_Arbitration.vi: Equiv_Struct_Beh_Arbitration.v Timing_Arbiter.vo Arbitration_beh_sc.vo Arbiter4_Proof.vo Arbitration_Proof.vo Lemmas_for_Arbitration.vo
+Invariant_a4_S.vo: Invariant_a4_S.v Arbiter4_Specif.vo
+Invariant_a4_S.vi: Invariant_a4_S.v Arbiter4_Specif.vo
+Lemmas_Comb_Behaviour.vo: Lemmas_Comb_Behaviour.v
+Lemmas_Comb_Behaviour.vi: Lemmas_Comb_Behaviour.v
+Lemmas_for_Arbitration.vo: Lemmas_for_Arbitration.v Behaviour_Struct_lemmas.vo Timing_Arbiter.vo Arbitration_Proof.vo Arbitration_Specif.vo Arbitration_beh_sc.vo
+Lemmas_for_Arbitration.vi: Lemmas_for_Arbitration.v Behaviour_Struct_lemmas.vo Timing_Arbiter.vo Arbitration_Proof.vo Arbitration_Specif.vo Arbitration_beh_sc.vo
+PriorityDecode_Proof.vo: PriorityDecode_Proof.v
+PriorityDecode_Proof.vi: PriorityDecode_Proof.v
+Timing_Arbiter.vo: Timing_Arbiter.v Behaviour_Struct_lemmas.vo Arbitration_beh_sc.vo
+Timing_Arbiter.vi: Timing_Arbiter.v Behaviour_Struct_lemmas.vo Arbitration_beh_sc.vo
+Timing_Proof.vo: Timing_Proof.v
+Timing_Proof.vi: Timing_Proof.v
+Arbiter4_Proof.html: Arbiter4_Proof.v Arbiter4_Specif.html Invariant_a4_S.html
+Arbiter4_Proof_lemmas.html: Arbiter4_Proof_lemmas.v Lemmas_Comb_Behaviour.html
+Arbiter4_Specif.html: Arbiter4_Specif.v Arbiter4_Proof_lemmas.html
+Arbitration_Proof.html: Arbitration_Proof.v Arbitration_Specif.html Arbitration_beh_sc.html Timing_Arbiter.html
+Arbitration_Specif.html: Arbitration_Specif.v Arbiter4_Specif.html PriorityDecode_Proof.html Timing_Proof.html Timing_Arbiter.html
+Arbitration_beh_sc.html: Arbitration_beh_sc.v PriorityDecode_Proof.html Timing_Proof.html Arbiter4_Specif.html
+Behaviour_Struct_lemmas.html: Behaviour_Struct_lemmas.v Arbiter4_Proof.html Timing_Proof.html PriorityDecode_Proof.html
+Equiv_Struct_Beh_Arbitration.html: Equiv_Struct_Beh_Arbitration.v Timing_Arbiter.html Arbitration_beh_sc.html Arbiter4_Proof.html Arbitration_Proof.html Lemmas_for_Arbitration.html
+Invariant_a4_S.html: Invariant_a4_S.v Arbiter4_Specif.html
+Lemmas_Comb_Behaviour.html: Lemmas_Comb_Behaviour.v
+Lemmas_for_Arbitration.html: Lemmas_for_Arbitration.v Behaviour_Struct_lemmas.html Timing_Arbiter.html Arbitration_Proof.html Arbitration_Specif.html Arbitration_beh_sc.html
+PriorityDecode_Proof.html: PriorityDecode_Proof.v
+Timing_Arbiter.html: Timing_Arbiter.v Behaviour_Struct_lemmas.html Arbitration_beh_sc.html
+Timing_Proof.html: Timing_Proof.v
