@@ -8,7 +8,7 @@
 (*                                                                          *)
 (*                                                                          *)
 (*             Laboratoire d'Informatique Fondamentale de Marseille         *)
-(*                   CMI et Faculté des Sciences de Luminy                  *)
+(*                   CMI et FacultÃ© des Sciences de Luminy                  *)
 (*                                                                          *)
 (*           e-mail:{Solange.Coupet,Line.Jakubiec}@lif.univ-mrs.fr          *)
 (*                                                                          *)
@@ -102,8 +102,6 @@ Hint Immediate lt_O_minus.
 
 Lemma le_minus : forall n m : nat, n - m <= n.
 simple induction n; auto with arith.
-intros.
-case m; simpl in |- *; auto with arith.
 Qed.
 Hint Immediate le_minus.
 
