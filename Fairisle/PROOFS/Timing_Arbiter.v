@@ -96,7 +96,7 @@ Section Timing_Arbiter_Proof.
  inversion_clear H_sig.
  apply C_Inv_t.
  simpl in |- *.
- specialize
+ generalize
   (eq_fs_and_RouteE_false (S_head (S_tail fs), S_head (S_tail act))
      (Trans_Timing (S_head fs, S_head act) s)); simpl in |- *; 
   auto.
@@ -233,7 +233,7 @@ Lemma Inv_a4 :
       (Compact Fs (Compact (Behaviour_TIMING (Compact Fs Act) st) ltReq))
       old_a4).
 intros sa st old_a4 ltReq H_I.
-specialize (Is_Inv_P_Timing st).
+generalize (Is_Inv_P_Timing st).
 generalize sa st old_a4 Fs Act ltReq H_I.
 cofix.
 intros sa' st' old_a4' fs' act' ltReq' H_I' H_P'.
@@ -327,7 +327,7 @@ elim y0; intros y1 y2.
 elim y2; intros y3 y4.
 simpl in |- *.
 
-specialize
+generalize
  (Equiv_Behaviour_TIMINGPDECODE_ID (S_tail i) (Trans_id y si)
     (Trans_Timing (y, y1) st) (Trans_PriorityDecode (y1, (y3, y4)) sp)).
 clear Equiv_Behaviour_TIMINGPDECODE_ID. 

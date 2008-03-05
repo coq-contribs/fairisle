@@ -93,23 +93,23 @@ Section Four_Arbiters_Proof_Correctness.
   intros pa4 H; simpl in pa4.
   elim H; clear H; intros H H'; simpl in H'.
 
-  specialize (eq_pair H'); intro h; elim h; clear h; intros H1 H2.
-  specialize (eq_pair H1); clear H1; intro H1; elim H1; clear H1;
+  generalize (eq_pair H'); intro h; elim h; clear h; intros H1 H2.
+  generalize (eq_pair H1); clear H1; intro H1; elim H1; clear H1;
    intros H11 H12.
-  specialize (eq_pair H2); clear H2; intro H2; elim H2; clear H2;
+  generalize (eq_pair H2); clear H2; intro H2; elim H2; clear H2;
    intros H21 H22.
 
-  specialize (id_list3_fst H11); specialize (id_list3_scd H11);
-   specialize (id_list3_thd H11); intros h11 h12 h13; 
+  generalize (id_list3_fst H11); generalize (id_list3_scd H11);
+   generalize (id_list3_thd H11); intros h11 h12 h13; 
    clear H11.
-  specialize (id_list3_fst H12); specialize (id_list3_scd H12);
-   specialize (id_list3_thd H12); intros h21 h22 h23; 
+  generalize (id_list3_fst H12); generalize (id_list3_scd H12);
+   generalize (id_list3_thd H12); intros h21 h22 h23; 
    clear H12.
-  specialize (id_list3_fst H21); specialize (id_list3_scd H21);
-   specialize (id_list3_thd H21); intros h31 h32 h33; 
+  generalize (id_list3_fst H21); generalize (id_list3_scd H21);
+   generalize (id_list3_thd H21); intros h31 h32 h33; 
    clear H21.
-  specialize (id_list3_fst H22); specialize (id_list3_scd H22);
-   specialize (id_list3_thd H22); intros h41 h42 h43; 
+  generalize (id_list3_fst H22); generalize (id_list3_scd H22);
+   generalize (id_list3_thd H22); intros h41 h42 h43; 
    clear H22.
 
 
@@ -324,10 +324,10 @@ Section Four_Arbiters_Proof_Correctness.
   elim old; clear old; intros g o.
   unfold output_four_arbiters in |- *; simpl in |- *.
   intro H; elim H; clear H; intros H1 H2.
-  specialize (eq_pair H2).
+  generalize (eq_pair H2).
   clear H2; intro H; elim H; clear H; intros H H'.
-  specialize (eq_pair H).
-  specialize (eq_pair H').
+  generalize (eq_pair H).
+  generalize (eq_pair H').
   clear H; intro H; elim H; clear H; intros H H0.
   clear H'; intro H'; elim H'; clear H'; intros H' H''.
   unfold Out_ArbiterXY in |- *; unfold Out_outdis in |- *.

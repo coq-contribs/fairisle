@@ -87,13 +87,13 @@ unfold Two_Fst_of_l4' in |- *; unfold Two_last_of_l4' in |- *.
 unfold Scd_of_l2 in |- *; unfold List2 in |- *; simpl in |- *.
 unfold J_Arby in |- *; unfold K_Arby in |- *; unfold Arb_yel in |- *.
 
-specialize (Ackor_false Hreq1); intro A; elim A; clear A; intros A1 A; elim A;
+generalize (Ackor_false Hreq1); intro A; elim A; clear A; intros A1 A; elim A;
  clear A; intros A2 A; elim A; clear A; intros A3 A4; 
  rewrite A1; rewrite A2; rewrite A3; rewrite A4; simpl in |- *.
-specialize (Ackor_false Hreq2); intro B; elim B; clear B; intros B1 B; elim B;
+generalize (Ackor_false Hreq2); intro B; elim B; clear B; intros B1 B; elim B;
  clear B; intros B2 B; elim B; clear B; intros B3 B4; 
  rewrite B1; rewrite B2; rewrite B3; rewrite B4; simpl in |- *.
-specialize (Ackor_false Hreq3); intro C; elim C; clear C; intros C1 C; elim C;
+generalize (Ackor_false Hreq3); intro C; elim C; clear C; intros C1 C; elim C;
  clear C; intros C2 C; elim C; clear C; intros C3 C4; 
  rewrite C1; rewrite C2; rewrite C3; rewrite C4; simpl in |- *.
 
@@ -139,7 +139,7 @@ replace ltReq with
 apply sym_equal; apply split_List4.
 
    (** (Ackor (Fth_of_l4 ltReq))=true **)
-specialize (Arbiter_last (Fst_of_l2 g22) (Scd_of_l2 g22) Hreq4); intro A;
+generalize (Arbiter_last (Fst_of_l2 g22) (Scd_of_l2 g22) Hreq4); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -196,13 +196,13 @@ unfold Two_Fst_of_l4' in |- *; unfold Two_last_of_l4' in |- *.
 unfold Scd_of_l2 in |- *; unfold List2 in |- *; simpl in |- *.
 unfold J_Arby in |- *; unfold K_Arby in |- *; unfold Arb_yel in |- *.
 
-specialize (Ackor_false Hreq1); intro A; elim A; clear A; intros A1 A; elim A;
+generalize (Ackor_false Hreq1); intro A; elim A; clear A; intros A1 A; elim A;
  clear A; intros A2 A; elim A; clear A; intros A3 A4; 
  rewrite A1; rewrite A2; rewrite A3; rewrite A4; simpl in |- *.
-specialize (Ackor_false Hreq2); intro B; elim B; clear B; intros B1 B; elim B;
+generalize (Ackor_false Hreq2); intro B; elim B; clear B; intros B1 B; elim B;
  clear B; intros B2 B; elim B; clear B; intros B3 B4; 
  rewrite B1; rewrite B2; rewrite B3; rewrite B4; simpl in |- *.
-specialize (Ackor_false Hreq4); intro C; elim C; clear C; intros C1 C; elim C;
+generalize (Ackor_false Hreq4); intro C; elim C; clear C; intros C1 C; elim C;
  clear C; intros C2 C; elim C; clear C; intros C3 C4; 
  rewrite C1; rewrite C2; rewrite C3; rewrite C4; simpl in |- *.
 
@@ -237,7 +237,7 @@ apply sym_equal; apply split_List4.
 apply pair_eq.
 
    (** (Ackor (Thd_of_l4 ltReq))=true **)
-specialize (Arbiter_last (Fst_of_l2 g21) (Scd_of_l2 g21) Hreq3); intro A;
+generalize (Arbiter_last (Fst_of_l2 g21) (Scd_of_l2 g21) Hreq3); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -320,10 +320,10 @@ unfold Two_Fst_of_l4' in |- *; unfold Two_last_of_l4' in |- *.
 unfold Scd_of_l2 in |- *; unfold List2 in |- *; simpl in |- *.
 unfold J_Arby in |- *; unfold K_Arby in |- *; unfold Arb_yel in |- *.
 
-specialize (Ackor_false Hreq1); intro A; elim A; clear A; intros A1 A; elim A;
+generalize (Ackor_false Hreq1); intro A; elim A; clear A; intros A1 A; elim A;
  clear A; intros A2 A; elim A; clear A; intros A3 A4; 
  rewrite A1; rewrite A2; rewrite A3; rewrite A4; simpl in |- *.
-specialize (Ackor_false Hreq2); intro B; elim B; clear B; intros B1 B; elim B;
+generalize (Ackor_false Hreq2); intro B; elim B; clear B; intros B1 B; elim B;
  clear B; intros B2 B; elim B; clear B; intros B3 B4; 
  rewrite B1; rewrite B2; rewrite B3; rewrite B4; simpl in |- *.
 
@@ -359,7 +359,7 @@ apply sym_equal; apply split_List4.
 apply pair_eq.
 
    (** (Ackor (Thd_of_l4 ltReq))=true **)
-specialize (Arbiter_last (Fst_of_l2 g21) (Scd_of_l2 g21) Hreq3); intro A;
+generalize (Arbiter_last (Fst_of_l2 g21) (Scd_of_l2 g21) Hreq3); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -368,7 +368,7 @@ replace ltReq with
 apply sym_equal; apply split_List4.
 
    (** (Ackor (Fth_of_l4 ltReq))=true **)
-specialize (Arbiter_last (Fst_of_l2 g22) (Scd_of_l2 g22) Hreq4); intro A;
+generalize (Arbiter_last (Fst_of_l2 g22) (Scd_of_l2 g22) Hreq4); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -427,13 +427,13 @@ unfold Two_Fst_of_l4' in |- *; unfold Two_last_of_l4' in |- *.
 unfold Scd_of_l2 in |- *; unfold List2 in |- *; simpl in |- *.
 unfold J_Arby in |- *; unfold K_Arby in |- *; unfold Arb_yel in |- *.
 
-specialize (Ackor_false Hreq1); intro A; elim A; clear A; intros A1 A; elim A;
+generalize (Ackor_false Hreq1); intro A; elim A; clear A; intros A1 A; elim A;
  clear A; intros A2 A; elim A; clear A; intros A3 A4; 
  rewrite A1; rewrite A2; rewrite A3; rewrite A4; simpl in |- *.
-specialize (Ackor_false Hreq3); intro B; elim B; clear B; intros B1 B; elim B;
+generalize (Ackor_false Hreq3); intro B; elim B; clear B; intros B1 B; elim B;
  clear B; intros B2 B; elim B; clear B; intros B3 B4; 
  rewrite B1; rewrite B2; rewrite B3; rewrite B4; simpl in |- *.
-specialize (Ackor_false Hreq4); intro C; elim C; clear C; intros C1 C; elim C;
+generalize (Ackor_false Hreq4); intro C; elim C; clear C; intros C1 C; elim C;
  clear C; intros C2 C; elim C; clear C; intros C3 C4; 
  rewrite C1; rewrite C2; rewrite C3; rewrite C4; simpl in |- *.
 
@@ -455,7 +455,7 @@ replace ltReq with
 apply sym_equal; apply split_List4.
 
    (** (Ackor (Scd_of_l4 ltReq))=true **)
-specialize (Arbiter_last (Fst_of_l2 g12) (Scd_of_l2 g12) Hreq2); intro A;
+generalize (Arbiter_last (Fst_of_l2 g12) (Scd_of_l2 g12) Hreq2); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -538,10 +538,10 @@ unfold Two_Fst_of_l4' in |- *; unfold Two_last_of_l4' in |- *.
 unfold Scd_of_l2 in |- *; unfold List2 in |- *; simpl in |- *.
 unfold J_Arby in |- *; unfold K_Arby in |- *; unfold Arb_yel in |- *.
 
-specialize (Ackor_false Hreq1); intro A; elim A; clear A; intros A1 A; elim A;
+generalize (Ackor_false Hreq1); intro A; elim A; clear A; intros A1 A; elim A;
  clear A; intros A2 A; elim A; clear A; intros A3 A4; 
  rewrite A1; rewrite A2; rewrite A3; rewrite A4; simpl in |- *.
-specialize (Ackor_false Hreq3); intro B; elim B; clear B; intros B1 B; elim B;
+generalize (Ackor_false Hreq3); intro B; elim B; clear B; intros B1 B; elim B;
  clear B; intros B2 B; elim B; clear B; intros B3 B4; 
  rewrite B1; rewrite B2; rewrite B3; rewrite B4; simpl in |- *.
 
@@ -563,7 +563,7 @@ replace ltReq with
 apply sym_equal; apply split_List4.
 
    (** (Ackor (Scd_of_l4 ltReq))=true **)
-specialize (Arbiter_last (Fst_of_l2 g12) (Scd_of_l2 g12) Hreq2); intro A;
+generalize (Arbiter_last (Fst_of_l2 g12) (Scd_of_l2 g12) Hreq2); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -585,7 +585,7 @@ replace ltReq with
 apply sym_equal; apply split_List4.
 
    (** (Ackor (Fth_of_l4 ltReq))=true **)
-specialize (Arbiter_last (Fst_of_l2 g22) (Scd_of_l2 g22) Hreq4); intro A;
+generalize (Arbiter_last (Fst_of_l2 g22) (Scd_of_l2 g22) Hreq4); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -644,10 +644,10 @@ unfold Two_Fst_of_l4' in |- *; unfold Two_last_of_l4' in |- *.
 unfold Scd_of_l2 in |- *; unfold List2 in |- *; simpl in |- *.
 unfold J_Arby in |- *; unfold K_Arby in |- *; unfold Arb_yel in |- *.
 
-specialize (Ackor_false Hreq1); intro A; elim A; clear A; intros A1 A; elim A;
+generalize (Ackor_false Hreq1); intro A; elim A; clear A; intros A1 A; elim A;
  clear A; intros A2 A; elim A; clear A; intros A3 A4; 
  rewrite A1; rewrite A2; rewrite A3; rewrite A4; simpl in |- *.
-specialize (Ackor_false Hreq4); intro B; elim B; clear B; intros B1 B; elim B;
+generalize (Ackor_false Hreq4); intro B; elim B; clear B; intros B1 B; elim B;
  clear B; intros B2 B; elim B; clear B; intros B3 B4; 
  rewrite B1; rewrite B2; rewrite B3; rewrite B4; simpl in |- *.
 
@@ -669,7 +669,7 @@ replace ltReq with
 apply sym_equal; apply split_List4.
 
    (** (Ackor (Scd_of_l4 ltReq))=true **)
-specialize (Arbiter_last (Fst_of_l2 g12) (Scd_of_l2 g12) Hreq2); intro A;
+generalize (Arbiter_last (Fst_of_l2 g12) (Scd_of_l2 g12) Hreq2); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -679,7 +679,7 @@ apply sym_equal; apply split_List4.
 
    (** (Ackor (Thd_of_l4 ltReq))=true **)
 apply pair_eq.
-specialize (Arbiter_last (Fst_of_l2 g21) (Scd_of_l2 g21) Hreq3); intro A;
+generalize (Arbiter_last (Fst_of_l2 g21) (Scd_of_l2 g21) Hreq3); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -748,7 +748,7 @@ unfold Two_Fst_of_l4' in |- *; unfold Two_last_of_l4' in |- *.
 unfold Scd_of_l2 in |- *; unfold List2 in |- *; simpl in |- *.
 unfold J_Arby in |- *; unfold K_Arby in |- *; unfold Arb_yel in |- *.
 
-specialize (Ackor_false Hreq1); intro A; elim A; clear A; intros A1 A; elim A;
+generalize (Ackor_false Hreq1); intro A; elim A; clear A; intros A1 A; elim A;
  clear A; intros A2 A; elim A; clear A; intros A3 A4; 
  rewrite A1; rewrite A2; rewrite A3; rewrite A4; simpl in |- *.
 
@@ -770,7 +770,7 @@ replace ltReq with
 apply sym_equal; apply split_List4.
 
    (** (Ackor (Scd_of_l4 ltReq))=true **)
-specialize (Arbiter_last (Fst_of_l2 g12) (Scd_of_l2 g12) Hreq2); intro A;
+generalize (Arbiter_last (Fst_of_l2 g12) (Scd_of_l2 g12) Hreq2); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -780,7 +780,7 @@ apply sym_equal; apply split_List4.
 
    (** (Ackor (Thd_of_l4 ltReq))=true **)
 apply pair_eq.
-specialize (Arbiter_last (Fst_of_l2 g21) (Scd_of_l2 g21) Hreq3); intro A;
+generalize (Arbiter_last (Fst_of_l2 g21) (Scd_of_l2 g21) Hreq3); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -789,7 +789,7 @@ replace ltReq with
 apply sym_equal; apply split_List4.
 
    (** (Ackor (Fth_of_l4 ltReq))=true **)
-specialize (Arbiter_last (Fst_of_l2 g22) (Scd_of_l2 g22) Hreq4); intro A;
+generalize (Arbiter_last (Fst_of_l2 g22) (Scd_of_l2 g22) Hreq4); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -847,13 +847,13 @@ unfold Two_Fst_of_l4' in |- *; unfold Two_last_of_l4' in |- *.
 unfold Scd_of_l2 in |- *; unfold List2 in |- *; simpl in |- *.
 unfold J_Arby in |- *; unfold K_Arby in |- *; unfold Arb_yel in |- *.
 
-specialize (Ackor_false Hreq2); intro A; elim A; clear A; intros A1 A; elim A;
+generalize (Ackor_false Hreq2); intro A; elim A; clear A; intros A1 A; elim A;
  clear A; intros A2 A; elim A; clear A; intros A3 A4; 
  rewrite A1; rewrite A2; rewrite A3; rewrite A4; simpl in |- *.
-specialize (Ackor_false Hreq3); intro B; elim B; clear B; intros B1 B; elim B;
+generalize (Ackor_false Hreq3); intro B; elim B; clear B; intros B1 B; elim B;
  clear B; intros B2 B; elim B; clear B; intros B3 B4; 
  rewrite B1; rewrite B2; rewrite B3; rewrite B4; simpl in |- *.
-specialize (Ackor_false Hreq4); intro C; elim C; clear C; intros C1 C; elim C;
+generalize (Ackor_false Hreq4); intro C; elim C; clear C; intros C1 C; elim C;
  clear C; intros C2 C; elim C; clear C; intros C3 C4; 
  rewrite C1; rewrite C2; rewrite C3; rewrite C4; simpl in |- *.
 
@@ -863,7 +863,7 @@ apply pair_eq.
 apply pair_eq.
 
    (** (Ackor (Fst_of_l4 ltReq))=true **)
-specialize (Arbiter_last (Fst_of_l2 g11) (Scd_of_l2 g11) Hreq1); intro A;
+generalize (Arbiter_last (Fst_of_l2 g11) (Scd_of_l2 g11) Hreq1); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -956,10 +956,10 @@ unfold Two_Fst_of_l4' in |- *; unfold Two_last_of_l4' in |- *.
 unfold Scd_of_l2 in |- *; unfold List2 in |- *; simpl in |- *.
 unfold J_Arby in |- *; unfold K_Arby in |- *; unfold Arb_yel in |- *.
 
-specialize (Ackor_false Hreq2); intro A; elim A; clear A; intros A1 A; elim A;
+generalize (Ackor_false Hreq2); intro A; elim A; clear A; intros A1 A; elim A;
  clear A; intros A2 A; elim A; clear A; intros A3 A4; 
  rewrite A1; rewrite A2; rewrite A3; rewrite A4; simpl in |- *.
-specialize (Ackor_false Hreq3); intro B; elim B; clear B; intros B1 B; elim B;
+generalize (Ackor_false Hreq3); intro B; elim B; clear B; intros B1 B; elim B;
  clear B; intros B2 B; elim B; clear B; intros B3 B4; 
  rewrite B1; rewrite B2; rewrite B3; rewrite B4; simpl in |- *.
 
@@ -969,7 +969,7 @@ apply pair_eq.
 apply pair_eq.
 
    (** (Ackor (Fst_of_l4 ltReq))=true **)
-specialize (Arbiter_last (Fst_of_l2 g11) (Scd_of_l2 g11) Hreq1); intro A;
+generalize (Arbiter_last (Fst_of_l2 g11) (Scd_of_l2 g11) Hreq1); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -1003,7 +1003,7 @@ replace ltReq with
 apply sym_equal; apply split_List4.
 
    (** (Ackor (Fth_of_l4 ltReq))=true **)
-specialize (Arbiter_last (Fst_of_l2 g22) (Scd_of_l2 g22) Hreq4); intro A;
+generalize (Arbiter_last (Fst_of_l2 g22) (Scd_of_l2 g22) Hreq4); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -1059,10 +1059,10 @@ unfold Two_Fst_of_l4' in |- *; unfold Two_last_of_l4' in |- *.
 unfold Scd_of_l2 in |- *; unfold List2 in |- *; simpl in |- *.
 unfold J_Arby in |- *; unfold K_Arby in |- *; unfold Arb_yel in |- *.
 
-specialize (Ackor_false Hreq2); intro A; elim A; clear A; intros A1 A; elim A;
+generalize (Ackor_false Hreq2); intro A; elim A; clear A; intros A1 A; elim A;
  clear A; intros A2 A; elim A; clear A; intros A3 A4; 
  rewrite A1; rewrite A2; rewrite A3; rewrite A4; simpl in |- *.
-specialize (Ackor_false Hreq4); intro B; elim B; clear B; intros B1 B; elim B;
+generalize (Ackor_false Hreq4); intro B; elim B; clear B; intros B1 B; elim B;
  clear B; intros B2 B; elim B; clear B; intros B3 B4; 
  rewrite B1; rewrite B2; rewrite B3; rewrite B4; simpl in |- *.
 
@@ -1072,7 +1072,7 @@ apply pair_eq.
 apply pair_eq.
 
    (** (Ackor (Fst_of_l4 ltReq))=true **)
-specialize (Arbiter_last (Fst_of_l2 g11) (Scd_of_l2 g11) Hreq1); intro A;
+generalize (Arbiter_last (Fst_of_l2 g11) (Scd_of_l2 g11) Hreq1); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -1094,7 +1094,7 @@ apply sym_equal; apply split_List4.
 
    (** (Ackor (Thd_of_l4 ltReq))=true **)
 apply pair_eq.
-specialize (Arbiter_last (Fst_of_l2 g21) (Scd_of_l2 g21) Hreq3); intro A;
+generalize (Arbiter_last (Fst_of_l2 g21) (Scd_of_l2 g21) Hreq3); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -1161,7 +1161,7 @@ unfold Two_Fst_of_l4' in |- *; unfold Two_last_of_l4' in |- *.
 unfold Scd_of_l2 in |- *; unfold List2 in |- *; simpl in |- *.
 unfold J_Arby in |- *; unfold K_Arby in |- *; unfold Arb_yel in |- *.
 
-specialize (Ackor_false Hreq2); intro A; elim A; clear A; intros A1 A; elim A;
+generalize (Ackor_false Hreq2); intro A; elim A; clear A; intros A1 A; elim A;
  clear A; intros A2 A; elim A; clear A; intros A3 A4; 
  rewrite A1; rewrite A2; rewrite A3; rewrite A4; simpl in |- *.
 
@@ -1171,7 +1171,7 @@ apply pair_eq.
 apply pair_eq.
 
    (** (Ackor (Fst_of_l4 ltReq))=true **)
-specialize (Arbiter_last (Fst_of_l2 g11) (Scd_of_l2 g11) Hreq1); intro A;
+generalize (Arbiter_last (Fst_of_l2 g11) (Scd_of_l2 g11) Hreq1); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -1193,7 +1193,7 @@ apply sym_equal; apply split_List4.
 
    (** (Ackor (Thd_of_l4 ltReq))=true **)
 apply pair_eq.
-specialize (Arbiter_last (Fst_of_l2 g21) (Scd_of_l2 g21) Hreq3); intro A;
+generalize (Arbiter_last (Fst_of_l2 g21) (Scd_of_l2 g21) Hreq3); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -1202,7 +1202,7 @@ replace ltReq with
 apply sym_equal; apply split_List4.
 
    (** (Ackor (Fth_of_l4 ltReq))=true **)
-specialize (Arbiter_last (Fst_of_l2 g22) (Scd_of_l2 g22) Hreq4); intro A;
+generalize (Arbiter_last (Fst_of_l2 g22) (Scd_of_l2 g22) Hreq4); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -1258,10 +1258,10 @@ unfold Two_Fst_of_l4' in |- *; unfold Two_last_of_l4' in |- *.
 unfold Scd_of_l2 in |- *; unfold List2 in |- *; simpl in |- *.
 unfold J_Arby in |- *; unfold K_Arby in |- *; unfold Arb_yel in |- *.
 
-specialize (Ackor_false Hreq3); intro A; elim A; clear A; intros A1 A; elim A;
+generalize (Ackor_false Hreq3); intro A; elim A; clear A; intros A1 A; elim A;
  clear A; intros A2 A; elim A; clear A; intros A3 A4; 
  rewrite A1; rewrite A2; rewrite A3; rewrite A4; simpl in |- *.
-specialize (Ackor_false Hreq4); intro B; elim B; clear B; intros B1 B; elim B;
+generalize (Ackor_false Hreq4); intro B; elim B; clear B; intros B1 B; elim B;
  clear B; intros B2 B; elim B; clear B; intros B3 B4; 
  rewrite B1; rewrite B2; rewrite B3; rewrite B4; simpl in |- *.
 
@@ -1271,7 +1271,7 @@ apply pair_eq.
 apply pair_eq.
 
    (** (Ackor (Fst_of_l4 ltReq))=true **)
-specialize (Arbiter_last (Fst_of_l2 g11) (Scd_of_l2 g11) Hreq1); intro A;
+generalize (Arbiter_last (Fst_of_l2 g11) (Scd_of_l2 g11) Hreq1); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -1280,7 +1280,7 @@ replace ltReq with
 apply sym_equal; apply split_List4.
 
    (** (Ackor (Scd_of_l4 ltReq))=true **)
-specialize (Arbiter_last (Fst_of_l2 g12) (Scd_of_l2 g12) Hreq2); intro A;
+generalize (Arbiter_last (Fst_of_l2 g12) (Scd_of_l2 g12) Hreq2); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -1360,7 +1360,7 @@ unfold Two_Fst_of_l4' in |- *; unfold Two_last_of_l4' in |- *.
 unfold Scd_of_l2 in |- *; unfold List2 in |- *; simpl in |- *.
 unfold J_Arby in |- *; unfold K_Arby in |- *; unfold Arb_yel in |- *.
 
-specialize (Ackor_false Hreq3); intro A; elim A; clear A; intros A1 A; elim A;
+generalize (Ackor_false Hreq3); intro A; elim A; clear A; intros A1 A; elim A;
  clear A; intros A2 A; elim A; clear A; intros A3 A4; 
  rewrite A1; rewrite A2; rewrite A3; rewrite A4; simpl in |- *.
 
@@ -1370,7 +1370,7 @@ apply pair_eq.
 apply pair_eq.
 
    (** (Ackor (Fst_of_l4 ltReq))=true **)
-specialize (Arbiter_last (Fst_of_l2 g11) (Scd_of_l2 g11) Hreq1); intro A;
+generalize (Arbiter_last (Fst_of_l2 g11) (Scd_of_l2 g11) Hreq1); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -1379,7 +1379,7 @@ replace ltReq with
 apply sym_equal; apply split_List4.
 
    (** (Ackor (Scd_of_l4 ltReq))=true **)
-specialize (Arbiter_last (Fst_of_l2 g12) (Scd_of_l2 g12) Hreq2); intro A;
+generalize (Arbiter_last (Fst_of_l2 g12) (Scd_of_l2 g12) Hreq2); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -1401,7 +1401,7 @@ replace ltReq with
 apply sym_equal; apply split_List4.
 
    (** (Ackor (Fth_of_l4 ltReq))=true **)
-specialize (Arbiter_last (Fst_of_l2 g22) (Scd_of_l2 g22) Hreq4); intro A;
+generalize (Arbiter_last (Fst_of_l2 g22) (Scd_of_l2 g22) Hreq4); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -1456,7 +1456,7 @@ unfold Two_Fst_of_l4' in |- *; unfold Two_last_of_l4' in |- *.
 unfold Scd_of_l2 in |- *; unfold List2 in |- *; simpl in |- *.
 unfold J_Arby in |- *; unfold K_Arby in |- *; unfold Arb_yel in |- *.
 
-specialize (Ackor_false Hreq4); intro B; elim B; clear B; intros B1 B; elim B;
+generalize (Ackor_false Hreq4); intro B; elim B; clear B; intros B1 B; elim B;
  clear B; intros B2 B; elim B; clear B; intros B3 B4; 
  rewrite B1; rewrite B2; rewrite B3; rewrite B4; simpl in |- *.
 
@@ -1466,7 +1466,7 @@ apply pair_eq.
 apply pair_eq.
 
    (** (Ackor (Fst_of_l4 ltReq))=true **)
-specialize (Arbiter_last (Fst_of_l2 g11) (Scd_of_l2 g11) Hreq1); intro A;
+generalize (Arbiter_last (Fst_of_l2 g11) (Scd_of_l2 g11) Hreq1); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -1475,7 +1475,7 @@ replace ltReq with
 apply sym_equal; apply split_List4.
 
    (** (Ackor (Scd_of_l4 ltReq))=true **)
-specialize (Arbiter_last (Fst_of_l2 g12) (Scd_of_l2 g12) Hreq2); intro A;
+generalize (Arbiter_last (Fst_of_l2 g12) (Scd_of_l2 g12) Hreq2); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -1485,7 +1485,7 @@ apply sym_equal; apply split_List4.
 
    (** (Ackor (Thd_of_l4 ltReq))=true **)
 apply pair_eq.
-specialize (Arbiter_last (Fst_of_l2 g21) (Scd_of_l2 g21) Hreq3); intro A;
+generalize (Arbiter_last (Fst_of_l2 g21) (Scd_of_l2 g21) Hreq3); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -1558,7 +1558,7 @@ apply pair_eq.
 apply pair_eq.
 
    (** (Ackor (Fst_of_l4 ltReq))=true **)
-specialize (Arbiter_last (Fst_of_l2 g11) (Scd_of_l2 g11) Hreq1); intro A;
+generalize (Arbiter_last (Fst_of_l2 g11) (Scd_of_l2 g11) Hreq1); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -1567,7 +1567,7 @@ replace ltReq with
 apply sym_equal; apply split_List4.
 
    (** (Ackor (Scd_of_l4 ltReq))=true **)
-specialize (Arbiter_last (Fst_of_l2 g12) (Scd_of_l2 g12) Hreq2); intro A;
+generalize (Arbiter_last (Fst_of_l2 g12) (Scd_of_l2 g12) Hreq2); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -1577,7 +1577,7 @@ apply sym_equal; apply split_List4.
 
    (** (Ackor (Thd_of_l4 ltReq))=true **)
 apply pair_eq.
-specialize (Arbiter_last (Fst_of_l2 g21) (Scd_of_l2 g21) Hreq3); intro A;
+generalize (Arbiter_last (Fst_of_l2 g21) (Scd_of_l2 g21) Hreq3); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -1586,7 +1586,7 @@ replace ltReq with
 apply sym_equal; apply split_List4.
 
    (** (Ackor (Fth_of_l4 ltReq))=true **)
-specialize (Arbiter_last (Fst_of_l2 g22) (Scd_of_l2 g22) Hreq4); intro A;
+generalize (Arbiter_last (Fst_of_l2 g22) (Scd_of_l2 g22) Hreq4); intro A;
  elim A; clear A; intros A A'.
 apply id_list3; auto.
 replace ltReq with
@@ -1633,20 +1633,20 @@ intros p_a4 HR; simpl in HR; clear p_a4.
 elim HR; clear HR.
 intro Hr; clear Hr.
 intro Hr.
-specialize (eq_pair Hr).
+generalize (eq_pair Hr).
 clear Hr; intros Hr; elim Hr; clear Hr; intros H1 H2.
-specialize (eq_pair H1); specialize (eq_pair H2); clear H1 H2.
+generalize (eq_pair H1); generalize (eq_pair H2); clear H1 H2.
 intros H1 H2; elim H1; clear H1; elim H2; clear H2; intros H1 H2 H3 H4.
-specialize (id_list3_fst H1); specialize (id_list3_scd H1); intros H11 H12.
-specialize (id_list3_fst H2); specialize (id_list3_scd H2); intros H21 H22.
-specialize (id_list3_fst H3); specialize (id_list3_scd H3); intros H31 H32.
-specialize (id_list3_fst H4); specialize (id_list3_scd H4); intros H41 H42.
-specialize (id_list3_thd H1); intro Ho1.
-specialize (id_list3_thd H2); intro Ho2; unfold Scd_of_l4 in Ho2;
+generalize (id_list3_fst H1); generalize (id_list3_scd H1); intros H11 H12.
+generalize (id_list3_fst H2); generalize (id_list3_scd H2); intros H21 H22.
+generalize (id_list3_fst H3); generalize (id_list3_scd H3); intros H31 H32.
+generalize (id_list3_fst H4); generalize (id_list3_scd H4); intros H41 H42.
+generalize (id_list3_thd H1); intro Ho1.
+generalize (id_list3_thd H2); intro Ho2; unfold Scd_of_l4 in Ho2;
  simpl in Ho2.
-specialize (id_list3_thd H3); intro Ho3; unfold Thd_of_l4 in Ho3;
+generalize (id_list3_thd H3); intro Ho3; unfold Thd_of_l4 in Ho3;
  simpl in Ho3.
-specialize (id_list3_thd H4); intro Ho4; unfold Fth_of_l4 in Ho4;
+generalize (id_list3_thd H4); intro Ho4; unfold Fth_of_l4 in Ho4;
  simpl in Ho4.
 
 replace o11 with true; trivial.
@@ -1728,8 +1728,8 @@ unfold J_Arby in |- *; unfold Arby in |- *; unfold Arbx in |- *;
  unfold Arb_xel in |- *; unfold Scd_of_l2 in |- *; 
  unfold List2 in |- *; simpl in |- *.
 unfold Arb_yel in |- *; unfold K_Arby in |- *.
-specialize (Ackor_false Hreq1); specialize (Ackor_false Hreq2);
- specialize (Ackor_false Hreq3); specialize (Ackor_false Hreq4).
+generalize (Ackor_false Hreq1); generalize (Ackor_false Hreq2);
+ generalize (Ackor_false Hreq3); generalize (Ackor_false Hreq4).
 intros A B C D; elim A; clear A; intros A1 A; elim A; clear A; intros A2 A;
  elim A; clear A; intros A3 A4.
 elim B; clear B; intros B1 B; elim B; clear B; intros B2 B; elim B; clear B;

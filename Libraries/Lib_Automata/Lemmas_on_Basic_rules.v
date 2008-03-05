@@ -149,8 +149,8 @@ Section Equiv_on_rule_SC.
   intros sa1 sa2 sb1 sb2 H0 H1 k k' H2.
   apply eqS.
   simpl in |- *.
-  specialize (H0 k k' H2 sa1 sb1).
-  intro H3; specialize (H1 (A1 k sa1) (B1 k' sb1) H3 sa2 sb2).
+  generalize (H0 k k' H2 sa1 sb1).
+  intro H3; generalize (H1 (A1 k sa1) (B1 k' sb1) H3 sa2 sb2).
   intro H4; clear H0 H1.
   inversion_clear H3.
   simpl in H.
