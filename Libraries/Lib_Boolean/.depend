@@ -1,9 +1,0 @@
-Bool_Compl.vo: Bool_Compl.v
-Bool_Compl.vi: Bool_Compl.v
-Lib_Bool.vo: Lib_Bool.v
-Lib_Bool.vi: Lib_Bool.v
-Lib_Zerob.vo: Lib_Zerob.v Lib_Bool.vo
-Lib_Zerob.vi: Lib_Zerob.v Lib_Bool.vo
-Bool_Compl.html: Bool_Compl.v
-Lib_Bool.html: Lib_Bool.v
-Lib_Zerob.html: Lib_Zerob.v Lib_Bool.html

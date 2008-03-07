@@ -1,1 +1,0 @@
-Dependent_lists.v Dependent_lists_Compl.v PolyList_dlist.v Lists_of_lists.v Tests_in_d_lists.v dlist_Compl.v Infinite_lists.v Proj_lists.v Fixed_dLists.v Conversions.v Manip_BoolLists.v -I ../../Libraries/Lib_Arithmetic -I ../../Libraries/Lib_Basis -I ../../Libraries/Lib_Boolean

@@ -1,1 +1,0 @@
-Mealy.v Moore.v Moore_Mealy.v Basic_composition_rules.v Derived_composition_rules.v Lemmas_on_Basic_rules.v Identity.v -I ../../Libraries/Lib_Lists -I ../../Libraries/Lib_Arithmetic -I ../../Libraries/Lib_Basis
