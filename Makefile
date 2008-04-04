@@ -24,8 +24,8 @@
 #########################
 
 OCAMLLIBS:=
-COQLIBS:= -R . fairisle
-COQDOCLIBS:=-R . fairisle
+COQLIBS:= -R . Fairisle
+COQDOCLIBS:=-R . Fairisle
 
 ##########################
 #                        #
@@ -145,78 +145,7 @@ GFILES:=$(VFILES:.v=.g)
 HTMLFILES:=$(VFILES:.v=.html)
 GHTMLFILES:=$(VFILES:.v=.g.html)
 
-all: ./Libraries/Lib_Basis/Lib_Prop.vo\
-  ./Libraries/Lib_Basis/Lib_Set_Products.vo\
-  ./Libraries/Lib_Basis/Product.vo\
-  ./Libraries/Lib_Basis/Injections.vo\
-  ./Libraries/Lib_Automata/Moore.vo\
-  ./Libraries/Lib_Automata/Derived_composition_rules.vo\
-  ./Libraries/Lib_Automata/Lemmas_on_Basic_rules.vo\
-  ./Libraries/Lib_Automata/Identity.vo\
-  ./Libraries/Lib_Automata/Moore_Mealy.vo\
-  ./Libraries/Lib_Automata/Basic_composition_rules.vo\
-  ./Libraries/Lib_Automata/Mealy.vo\
-  ./Libraries/Lib_Boolean/Lib_Bool.vo\
-  ./Libraries/Lib_Boolean/Bool_Compl.vo\
-  ./Libraries/Lib_Boolean/Lib_Zerob.vo\
-  ./Libraries/Lib_Lists/Proj_lists.vo\
-  ./Libraries/Lib_Lists/Infinite_lists.vo\
-  ./Libraries/Lib_Lists/PolyList_dlist.vo\
-  ./Libraries/Lib_Lists/Tests_in_d_lists.vo\
-  ./Libraries/Lib_Lists/Dependent_lists.vo\
-  ./Libraries/Lib_Lists/dlist_Compl.vo\
-  ./Libraries/Lib_Lists/Conversions.vo\
-  ./Libraries/Lib_Lists/Fixed_dLists.vo\
-  ./Libraries/Lib_Lists/Manip_BoolLists.vo\
-  ./Libraries/Lib_Lists/Dependent_lists_Compl.vo\
-  ./Libraries/Lib_Lists/Lists_of_lists.vo\
-  ./Libraries/Lib_Arithmetic/Lib_Div_Even_Odd.vo\
-  ./Libraries/Lib_Arithmetic/Lib_Pred.vo\
-  ./Libraries/Lib_Arithmetic/Lib_Plus.vo\
-  ./Libraries/Lib_Arithmetic/Lib_Square.vo\
-  ./Libraries/Lib_Arithmetic/Compare_Nat.vo\
-  ./Libraries/Lib_Arithmetic/Lib_Fact.vo\
-  ./Libraries/Lib_Arithmetic/Lib_Eq_Le_Lt.vo\
-  ./Libraries/Lib_Arithmetic/Syntactic_Def.vo\
-  ./Libraries/Lib_Arithmetic/Lib_Exp.vo\
-  ./Libraries/Lib_Arithmetic/Arith_Compl.vo\
-  ./Libraries/Lib_Arithmetic/Lib_Mult.vo\
-  ./Libraries/Lib_Arithmetic/Lib_Dec.vo\
-  ./Libraries/Lib_Arithmetic/Lib_Minus.vo\
-  ./Fairisle/SPECIF/ROUND_ROBIN/TypePorts.vo\
-  ./Fairisle/SPECIF/ROUND_ROBIN/PickSuccessfulInput.vo\
-  ./Fairisle/SPECIF/ROUND_ROBIN/PortsCompl.vo\
-  ./Fairisle/SPECIF/ROUND_ROBIN/SuccessfulInput.vo\
-  ./Fairisle/SPECIF/ROUND_ROBIN/RoundRobin.vo\
-  ./Fairisle/SPECIF/ROUND_ROBIN/NextPort.vo\
-  ./Fairisle/SPECIF/ROUND_ROBIN/Lemmas_on_fcts.vo\
-  ./Fairisle/SPECIF/ELEMENT/Tools_Inf.vo\
-  ./Fairisle/SPECIF/ELEMENT/ElementTemp.vo\
-  ./Fairisle/SPECIF/ELEMENT/Arbitration.vo\
-  ./Fairisle/SPECIF/ELEMENT/ElementTemp_Behaviour.vo\
-  ./Fairisle/SPECIF/ELEMENT/Base_Behaviour.vo\
-  ./Fairisle/SPECIF/ELEMENT/ElementComb_Behaviour.vo\
-  ./Fairisle/SPECIF/ELEMENT/ElementComb.vo\
-  ./Fairisle/SPECIF/GATES_AND_LATCHES/Gates_Del.vo\
-  ./Fairisle/SPECIF/GATES_AND_LATCHES/Base_Struct.vo\
-  ./Fairisle/SPECIF/GATES_AND_LATCHES/Gen_Gates_Del.vo\
-  ./Fairisle/SPECIF/GATES_AND_LATCHES/Lemmas_Struct.vo\
-  ./Fairisle/SPECIF/GATES_AND_LATCHES/Gates.vo\
-  ./Fairisle/PROOFS/PriorityDecode_Proof.vo\
-  ./Fairisle/PROOFS/Arbiter4_Proof.vo\
-  ./Fairisle/PROOFS/Lemmas_for_Arbitration.vo\
-  ./Fairisle/PROOFS/Arbiter4_Proof_lemmas.vo\
-  ./Fairisle/PROOFS/Behaviour_Struct_lemmas.vo\
-  ./Fairisle/PROOFS/Arbiter4_Specif.vo\
-  ./Fairisle/PROOFS/Arbitration_Proof.vo\
-  ./Fairisle/PROOFS/Arbitration_beh_sc.vo\
-  ./Fairisle/PROOFS/Timing_Arbiter.vo\
-  ./Fairisle/PROOFS/Timing_Proof.vo\
-  ./Fairisle/PROOFS/Invariant_a4_S.vo\
-  ./Fairisle/PROOFS/Equiv_Struct_Beh_Arbitration.vo\
-  ./Fairisle/PROOFS/Arbitration_Specif.vo\
-  ./Fairisle/PROOFS/Lemmas_Comb_Behaviour.vo
-
+all: $(VOFILES) 
 spec: $(VIFILES)
 
 gallina: $(GFILES)
@@ -245,8 +174,6 @@ all-gal.ps: $(VFILES)
 
 .PHONY: all opt byte archclean clean install depend html
 
-.SUFFIXES: .v .vo .vi .g .html .tex .g.tex .g.html
-
 %.vo %.glob: %.v
 	$(COQC) -dump-glob $*.glob $(COQDEBUG) $(COQFLAGS) $*
 
@@ -268,13 +195,8 @@ all-gal.ps: $(VFILES)
 %.g.html: %.v %.glob
 	$(COQDOC) -glob-from $*.glob -html -g $< -o $@
 
-%.v.d.raw: %.v
-	$(COQDEP) -slash $(COQLIBS) "$<" > "$@"\
-	  || ( RV=$$?; rm -f "$@"; exit $${RV} )
-
-%.v.d: %.v.d.raw
-	$(HIDE)sed 's/\(.*\)\.vo[[:space:]]*:/\1.vo \1.glob:/' < "$<" > "$@" \
-	  || ( RV=$$?; rm -f "$@"; exit $${RV} )
+%.v.d: %.v
+	$(COQDEP) -glob -slash $(COQLIBS) "$<" > "$@" || ( RV=$$?; rm -f "$@"; exit $${RV} )
 
 byte:
 	$(MAKE) all "OPT:=-byte"
