@@ -20,3 +20,4 @@ and the formal verification of the Fairisle 4x4 Switch Element.
 Url: http://www.dil.univ-mrs.fr/~jakubiec/fairisle.tar.gz
 Keywords: circuits, automata, co-induction, dependent types.
 Require: 
+Category: Computer Science/Architecture
