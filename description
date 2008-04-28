@@ -17,7 +17,7 @@ Date: 15/12/2005
 Description: This library contains the development of general definitions dedicated 
 to the verification of sequential synchronous devices (based on Moore and Mealy automata) 
 and the formal verification of the Fairisle 4x4 Switch Element.
-Url: http://www.dil.univ-mrs.fr/~jakubiec/fairisle.tar.gz
+URL: http://www.dil.univ-mrs.fr/~jakubiec/fairisle.tar.gz
 Keywords: circuits, automata, co-induction, dependent types.
 Require: 
 Category: Computer Science/Architecture
