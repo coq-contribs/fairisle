@@ -23,7 +23,7 @@
 (*                              PolyList_dlist.v                            *)
 (****************************************************************************)
 
-Require Export TheoryList.
+Require Export List.
 Require Export Dependent_lists.
 
 Set Implicit Arguments.
