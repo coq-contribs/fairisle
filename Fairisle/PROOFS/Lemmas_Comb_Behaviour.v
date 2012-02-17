@@ -223,18 +223,15 @@ elim
     (d_map (no_in (i:=4)) (list_dlist (RequestsToArbitrate l))));
  simpl in |- *.
 intro H'.
-unfold SUC_MODN at 2 4 in |- *;
+unfold SUC_MODN at 2 4 in |- *.
  elim (less_or_eq (exist (fun p : nat => p < 4) 2 lt_2_4)); 
  simpl in |- *; auto.
 intro y'.
-unfold SUC_MODN in |- *;
- elim (less_or_eq (exist (fun p : nat => p < 4) 2 lt_2_4)); 
+unfold SUC_MODN in |- *.
+ elim (less_or_eq (exist (fun p : nat => p < 4) 3 y')); 
  simpl in |- *; auto.
-intro a.
-elim (less_or_eq (exist (fun n : nat => n < 4) 3 a)); simpl in |- *; auto.
 intro Abs; absurd (4 < 4); auto with arith.
 rewrite d_In_SUCSUC_SSO_l4; simpl in |- *; auto with arith.
-intro b; absurd (3 = 4); auto with arith.
 intro b; absurd (3 = 4); auto with arith.
 intro b.
 elim
@@ -369,15 +366,13 @@ unfold SUC_MODN at 2 4 in |- *;
  elim (less_or_eq (exist (fun p : nat => p < 4) 1 lt_1_4)); 
  simpl in |- *; auto.
 intro y'.
-elim (less_or_eq (exist (fun p : nat => p < 4) 1 lt_1_4)); simpl in |- *.
-intro a; unfold SUC_MODN in |- *.
-elim (less_or_eq (exist (fun n : nat => n < 4) 2 a)); simpl in |- *.
+unfold SUC_MODN in |- *.
+elim (less_or_eq (exist (fun n : nat => n < 4) 2 y')); simpl in |- *.
 intro a0.
 rewrite d_In_SUCSUC1_l4.
 auto.
 auto.
 intro Abs; absurd (3 = 4); auto.
-intro Abs; absurd (2 = 4); auto.
 intro Abs; absurd (2 = 4); auto.
 intro non.
 rewrite not_d_In_SUCSUC1_l4.
@@ -517,13 +512,7 @@ unfold SUC_MODN at 2 in |- *;
 intro y'.
 unfold SUC_MODN in |- *;
  elim (less_or_eq (exist (fun n : nat => n < 4) 1 y')); 
- simpl in |- *; auto.
-elim (less_or_eq (exist (fun p : nat => p < 4) 0 lt_O_4)); simpl in |- *.
-intro a.
-elim (less_or_eq (exist (fun n : nat => n < 4) 1 a)); simpl in |- *.
-auto.
-intro Abs; absurd (2 = 4); auto with arith.
-intro Abs; absurd (1 = 4); auto.
+ simpl in |- *; auto. 
 intro Abs; absurd (2 = 4); auto with arith.
 intro Abs; absurd (1 = 4); auto.
 intro non.
@@ -540,8 +529,6 @@ intro H'.
 unfold SUC_MODN at 3 6 in |- *;
  elim (less_or_eq (exist (fun p : nat => p < 4) 0 lt_O_4)); 
  simpl in |- *; auto.
-intro H0.
-elim (less_or_eq (exist (fun p : nat => p < 4) 0 lt_O_4)); simpl in |- *.
 intro a.
 unfold SUC_MODN at 2 4 in |- *; simpl in |- *.
 elim (less_or_eq (exist (fun n : nat => n < 4) 1 a)); simpl in |- *.
@@ -555,7 +542,6 @@ auto.
 auto.
 intro Abs; absurd (3 = 4); auto.
 intro Abs; absurd (2 = 4); auto.
-intro Abs; absurd (1 = 4); auto.
 intro Abs; absurd (1 = 4); auto.
 intro non.
 elim
