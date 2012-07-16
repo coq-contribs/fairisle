@@ -23,6 +23,7 @@
 (*                               Lib_Prop.v                                 *)
 (****************************************************************************)
 
+Global Set Asymmetric Patterns.
 
 Inductive or3 (A B C : Prop) : Set :=
   | or3_Left : A -> or3 A B C

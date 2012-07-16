@@ -24,7 +24,7 @@
 (****************************************************************************)
 
 
-
+Global Set Asymmetric Patterns.
 Set Implicit Arguments.
 Unset Strict Implicit.
 

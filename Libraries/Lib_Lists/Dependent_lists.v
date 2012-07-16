@@ -26,6 +26,7 @@
 Require Export Eqdep.
 Require Export Arith.
 
+Global Set Asymmetric Patterns.
 Set Implicit Arguments.
 Unset Strict Implicit.
   

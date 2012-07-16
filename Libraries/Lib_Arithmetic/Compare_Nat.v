@@ -23,6 +23,7 @@
 (*                              Compare_Nat.v                               *)
 (****************************************************************************)
 
+Global Set Asymmetric Patterns.
 Require Export Arith.
 
 Inductive Or3 (A B C : Prop) : Set :=
