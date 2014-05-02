@@ -119,9 +119,9 @@ Section Struct_Beh_Arbitration.
 
   Variable i : Stream Input_type.
 
-  Let Fs := S_map (fst (B:=_)) i.
+  Let Fs := S_map fstS i.
 
-  Let Act := S_map (fst (B:=_)) (S_map (snd (B:=_)) i).
+  Let Act := S_map fstS (S_map sndS i).
 
   Hypothesis fs_0 : S_head Fs = false.
 
@@ -230,10 +230,10 @@ Section Struct_Beh_Arbitration.
   apply
    eqS_Inv_P_Timing
     with
-      (S_map (fst (B:=_)) i)
+      (S_map fstS i)
       (States_TIMING
-         (Compact (S_map (fst (B:=_)) i)
-            (S_map (fst (B:=_)) (S_map (snd (B:=_)) i))) START_t).
+         (Compact (S_map fstS i)
+            (S_map fstS (S_map sndS i))) START_t).
   apply EqS_reflex.
   apply EqS_Snd_SC_TIMING.
   apply Is_Inv_P_Timing; try trivial.

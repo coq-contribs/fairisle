@@ -63,8 +63,8 @@ Section Particular_Parallel_Composition.
     (fun (i : Stream Input_type) (s1 s1' : State_type_1) =>
      S_map output_part
        (dlist_to_Stream
-          (List2 (S1 (S_map (fst (B:=_)) (S_map f i)) s1)
-             (S1 (S_map (snd (B:=_)) (S_map f i)) s1')))) 
+          (List2 (S1 (S_map fstS (S_map f i)) s1)
+             (S1 (S_map sndS (S_map f i)) s1')))) 
     (only parsing).
 
 
@@ -101,8 +101,8 @@ Section Particular_Parallel_Composition.
      ((fun (i : Stream Input_type) (s1 s1' : State_type_1) =>
        S_map output_part
          (dlist_to_Stream
-            (List2 (S1 (S_map (fst (B:=_)) (S_map f i)) s1)
-               (S1 (S_map (snd (B:=_)) (S_map f i)) s1')))) i s1 s1')
+            (List2 (S1 (S_map fstS (S_map f i)) s1)
+               (S1 (S_map sndS (S_map f i)) s1')))) i s1 s1')
      (PC_part i (s1, s1')).
   cofix.
   intros i s1 s1'.

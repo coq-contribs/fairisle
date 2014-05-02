@@ -23,7 +23,6 @@
 (*                        Basic_composition_rules.v                         *)
 (****************************************************************************)
  
- 
 Require Export Mealy.
 
 Set Implicit Arguments.
@@ -104,8 +103,8 @@ Section Parallel_Composition.
    EqS
      ((fun (i : Stream Input_type) (s1 : State_type_1) (s2 : State_type_2) =>
        S_map output
-         (Compact (A1 (S_map (fst (B:=_)) (S_map f i)) s1)
-            (A2 (S_map (snd (B:=_)) (S_map f i)) s2))) i s1 s2)
+         (Compact (A1 (S_map fstS (S_map f i)) s1)
+            (A2 (S_map sndS (S_map f i)) s2))) i s1 s2)
      (PC i (s1, s2)).
   cofix.
   intros i s1 s2.
@@ -128,8 +127,8 @@ Section Parallel_Composition.
    forall (i : Stream Input_type) (s1 : State_type_1) (s2 : State_type_2),
    EqS
      ((fun (i : Stream Input_type) (s1 : State_type_1) (s2 : State_type_2) =>
-       Compact (States_A1 (S_map (fst (B:=_)) (S_map f i)) s1)
-         (States_A2 (S_map (snd (B:=_)) (S_map f i)) s2)) i s1 s2)
+       Compact (States_A1 (S_map fstS (S_map f i)) s1)
+         (States_A2 (S_map sndS (S_map f i)) s2)) i s1 s2)
      (States_PC i (s1, s2)).
   cofix.
   intros i s1 s2.

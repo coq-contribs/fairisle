@@ -23,7 +23,6 @@
 (*                         Lemmas_on_Basic_rules.v                          *)
 (****************************************************************************)
  
- 
 Require Export Basic_composition_rules.
 
 Set Implicit Arguments.
@@ -62,13 +61,14 @@ Section Equiv_on_rule_PC.
    forall (i i' : Stream Input_type) (sa1 : State_type_a1)
      (sa2 : State_type_a2) (sb1 : State_type_b1) (sb2 : State_type_b2),
    EqS i i' ->
-   EqS (A1 (S_map (fst (B:=_)) (S_map f i)) sa1)
-     (B1 (S_map (fst (B:=_)) (S_map f i)) sb1) ->
-   EqS (A2 (S_map (snd (B:=_)) (S_map f i')) sa2)
-     (B2 (S_map (snd (B:=_)) (S_map f i')) sb2) ->
+   EqS (A1 (S_map fstS (S_map f i)) sa1)
+     (B1 (S_map fstS (S_map f i)) sb1) ->
+   EqS (A2 (S_map sndS (S_map f i')) sa2)
+     (B2 (S_map sndS (S_map f i')) sb2) ->
    EqS (PC Transa1 Transa2 Outa1 Outa2 f output i (sa1, sa2))
      (PC Transb1 Transb2 Outb1 Outb2 f output i' (sb1, sb2)).
   cofix.
+  unfold fstS, sndS.
   intros i i' sa1 sa2 sb1 sb2 H1 H2 H3.
   inversion_clear H1.
   inversion_clear H2.
@@ -200,8 +200,8 @@ Section output_is_identity.
   Lemma Compact_PC_id :
    forall (i : Stream Input_type) (s1 : State_type_a1) (s2 : State_type_a2),
    EqS
-     (Compact (A1 (S_map (fst (B:=_)) (S_map f i)) s1)
-        (A2 (S_map (snd (B:=_)) (S_map f i)) s2))
+     (Compact (A1 (S_map fstS (S_map f i)) s1)
+        (A2 (S_map sndS (S_map f i)) s2))
      (PC Trans1 Trans2 Out1 Out2 f output i (s1, s2)).
   intros i s1 s2.
   apply
@@ -313,7 +313,7 @@ Lemma States_SC_simpl :
    (t2 : Output_type_1 -> State_type_a2 -> State_type_a2)
    (out1 : Input_type -> State_type_a1 -> Output_type_1)
    (i : Stream Input_type) (s1 : State_type_a1) (s2 : State_type_a2),
- EqS (S_map (fst (B:=_)) (States_SC t1 t2 out1 i (s1, s2)))
+ EqS (S_map fstS (States_SC t1 t2 out1 i (s1, s2)))
    (States_Mealy t1 i s1).
 cofix.
 intros.

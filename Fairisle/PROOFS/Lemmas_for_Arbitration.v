@@ -40,7 +40,7 @@ Lemma Inv_P_Timing_Inv_A :
            (d_list bool 4 * (d_list bool 4 * d_list (d_list bool 2) 4))))
    (sA : Stream STATE_A)
    (sitpa4 : Stream (state_id * (label_t * STATE_p) * STATE_a4)),
- Inv_P_Timing (S_map (fst (B:=_)) i) (S_Snd_of_3 (S_map (fst (B:=_)) sitpa4)) ->
+ Inv_P_Timing (S_map fstS i) (S_Snd_of_3 (S_map fstS sitpa4)) ->
  Inv P_A i sA sitpa4.
 cofix.
 intros i sA sitpa4 H_p.
@@ -76,7 +76,7 @@ Qed.
      i : Stream
            (bool *
             (d_list bool 4 * (d_list bool 4 * d_list (d_list bool 2) 4))),
-   EqS (S_map (snd (B:=_)) (S_map f_tpi i)) i.
+   EqS (S_map sndS (S_map f_tpi i)) i.
   cofix.
   intro i'.
   apply eqS; simpl in |- *.
@@ -92,9 +92,9 @@ Qed.
      i : Stream
            (bool *
             (d_list bool 4 * (d_list bool 4 * d_list (d_list bool 2) 4))),
-   EqS (S_map (fst (B:=_)) (S_map f_tp i))
-     (Compact (S_map (fst (B:=_)) i)
-        (S_map (fst (B:=_)) (S_map (snd (B:=_)) i))).
+   EqS (S_map fstS (S_map f_tp i))
+     (Compact (S_map fstS i)
+        (S_map fstS (S_map sndS i))).
   cofix.
   intro.
   apply eqS.
@@ -117,10 +117,10 @@ Qed.
      (sa4 : STATE_a4),
    EqS
      (S_Snd_of_3
-        (S_map (fst (B:=_)) (States_Beh_SC_ARBITRATION i (si, (st, sp), sa4))))
+        (S_map fstS (States_Beh_SC_ARBITRATION i (si, (st, sp), sa4))))
      (States_TIMING
-        (Compact (S_map (fst (B:=_)) i)
-           (S_map (fst (B:=_)) (S_map (snd (B:=_)) i))) st).
+        (Compact (S_map fstS i)
+           (S_map fstS (S_map sndS i))) st).
 
   intros i si st sp sa4.
   unfold States_Beh_SC_ARBITRATION in |- *.
@@ -136,8 +136,8 @@ Qed.
    EqS_trans
     with
       (S_Snd_of_3
-         (Compact (States_IDENTITY (S_map (fst (B:=_)) (S_map f_tpi i)) si)
-            (States_Beh_TIMING_PDECODE (S_map (snd (B:=_)) (S_map f_tpi i))
+         (Compact (States_IDENTITY (S_map fstS (S_map f_tpi i)) si)
+            (States_Beh_TIMING_PDECODE (S_map sndS (S_map f_tpi i))
                (st, sp)))).
 
   apply EqS_S_Snd_of_3.
@@ -149,7 +149,7 @@ Qed.
    EqS_trans
     with
       (S_Snd_of_3
-         (Compact (States_IDENTITY (S_map (fst (B:=_)) (S_map f_tpi i)) si)
+         (Compact (States_IDENTITY (S_map fstS (S_map f_tpi i)) si)
             (States_Beh_TIMING_PDECODE i (st, sp)))).
 
   apply EqS_S_Snd_of_3.
@@ -161,16 +161,16 @@ Qed.
    EqS_trans
     with
       (S_Snd_of_3
-         (Compact (States_IDENTITY (S_map (fst (B:=_)) (S_map f_tpi i)) si)
-            (Compact (States_TIMING (S_map (fst (B:=_)) (S_map f_tp i)) st)
-               (States_PRIORITY_DECODE (S_map (snd (B:=_)) (S_map f_tp i)) sp)))).
+         (Compact (States_IDENTITY (S_map fstS (S_map f_tpi i)) si)
+            (Compact (States_TIMING (S_map fstS (S_map f_tp i)) st)
+               (States_PRIORITY_DECODE (S_map sndS (S_map f_tp i)) sp)))).
   apply EqS_S_Snd_of_3.
   apply EqS_Compact.
   apply EqS_reflex.
   unfold States_TIMING in |- *; unfold States_PRIORITY_DECODE in |- *;
    unfold States_Beh_TIMING_PDECODE in |- *.
   apply EqS_sym; apply Equiv_States_A1A2_PC.
-  apply EqS_trans with (States_TIMING (S_map (fst (B:=_)) (S_map f_tp i)) st).  apply S_Snd_of_3_Compact.
+  apply EqS_trans with (States_TIMING (S_map fstS (S_map f_tp i)) st).  apply S_Snd_of_3_Compact.
   unfold States_TIMING in |- *.
   apply EqS_States_Mealy.
   try trivial.

@@ -23,7 +23,6 @@
 (*                             Fixed_dLists.v                               *)
 (****************************************************************************)
 
-
 Require Export dlist_Compl.
 Require Export Syntactic_Def.
 Require Export Proj_lists.
@@ -410,10 +409,10 @@ Definition transf2 (A : Set) (q : A * (A * (A * A))) :=
 (* Because of the parallel composition of TWO_ARBITERS, we have a term of *)
 (* type (A*B)*(C*D) but we need of a term of type A*B*C*D *)
 Definition transf3 (A B C D : Set) (l : Stream (A * B * (C * D))) :=
-  Compact (S_map (fst (B:=_)) (S_map (fst (B:=_)) l))
-    (Compact (S_map (snd (B:=_)) (S_map (fst (B:=_)) l))
-       (Compact (S_map (fst (B:=_)) (S_map (snd (B:=_)) l))
-          (S_map (snd (B:=_)) (S_map (snd (B:=_)) l)))).
+  Compact (S_map fstS (S_map fstS l))
+    (Compact (S_map sndS (S_map fstS l))
+       (Compact (S_map fstS (S_map sndS l))
+          (S_map sndS (S_map sndS l)))).
   
 
 Lemma equiv1 :

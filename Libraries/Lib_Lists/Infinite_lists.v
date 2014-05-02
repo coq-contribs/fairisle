@@ -23,7 +23,6 @@
 (*                             Infinite_lists.v                             *)
 (****************************************************************************)
 
-
 Require Export Lists_of_lists.
 Require Export Dependent_lists_Compl.
 
@@ -284,21 +283,22 @@ Definition S_list_of_seg (A : Set) (n m k p : nat)
 
 (** Tools over streams of products **)
 
-Notation S_Fst := (S_map (fst (B:=_))) (only parsing).
-Notation S_Snd := (S_map (snd (B:=_))) (only parsing).
+Definition fstS {A B : Set} : prod A B -> A := fst.
+Definition sndS {A B : Set} : prod A B -> B := snd.
+
+Notation S_Fst := (S_map (fstS (B:=_))) (only parsing).
+Notation S_Snd := (S_map (sndS (B:=_))) (only parsing).
 
 Definition S_Snd_of_3 (A B C : Set) (s : Stream (A * (B * C))) :=
-  S_map (fst (B:=_)) (S_map (snd (B:=_)) s).
+  S_map fstS (S_map sndS s).
 Definition S_Thd_of_3 (A B C : Set) (s : Stream (A * (B * C))) :=
-  S_map (snd (B:=_)) (S_map (snd (B:=_)) s).
-
+  S_map sndS (S_map sndS s).
 Definition S_Snd_of_4 (A B C D : Set) (s : Stream (A * (B * (C * D)))) :=
-  S_map (fst (B:=_)) (S_map (snd (B:=_)) s).
+  S_map fstS (S_map sndS s).
 Definition S_Thd_of_4 (A B C D : Set) (s : Stream (A * (B * (C * D)))) :=
-  S_map (fst (B:=_)) (S_map (snd (B:=_)) (S_map (snd (B:=_)) s)).
+  S_map fstS (S_map sndS (S_map sndS s)).
 Definition S_Fth_of_4 (A B C D : Set) (s : Stream (A * (B * (C * D)))) :=
-  S_map (snd (B:=_)) (S_map (snd (B:=_)) (S_map (snd (B:=_)) s)).
-
+  S_map sndS (S_map sndS (S_map sndS s)).
 
 Lemma EqS_S_Thd_of_3 :
  forall (A B C : Set) (s s' : Stream (A * (B * C))),
@@ -356,9 +356,10 @@ elim H; elim H1; auto.
 apply EqS_Compact; auto.
 Qed.
 
+
 Lemma Fst_Compact :
  forall (A B : Set) (s1 : Stream A) (s2 : Stream B),
- EqS (S_map (fst (B:=_)) (Compact s1 s2)) s1.
+ EqS (S_map fstS (Compact s1 s2)) s1.
 cofix.
 intros A B s1 s2.
 apply eqS; simpl in |- *; auto.
@@ -366,7 +367,7 @@ Qed.
 
 Lemma Snd_Compact :
  forall (A B : Set) (s1 : Stream A) (s2 : Stream B),
- EqS (S_map (snd (B:=_)) (Compact s1 s2)) s2.
+ EqS (S_map sndS (Compact s1 s2)) s2.
 cofix.
 intros A B s1 s2.
 apply eqS; simpl in |- *; auto.

@@ -294,18 +294,18 @@ Lemma Equiv_Behaviour_TIMINGPDECODE_ID :
            (d_list bool 4 * (d_list bool 4 * d_list (d_list bool 2) 4))))
    (si : state_id) (st : label_t) (sp : STATE_p),
  EqS (Behaviour_TIMINGPDECODE_ID i (si, (st, sp)))
-   (Compact (S_map (fst (B:=_)) i)
+   (Compact (S_map fstS i)
       (Compact
          (Behaviour_TIMING
-            (Compact (S_map (fst (B:=_)) i)
-               (S_map (fst (B:=_)) (S_map (snd (B:=_)) i))) st)
+            (Compact (S_map fstS i)
+               (S_map fstS (S_map sndS i))) st)
          (Behaviour_PRIORITY_DECODE
-            (Compact (S_map (fst (B:=_)) (S_map (snd (B:=_)) i))
+            (Compact (S_map fstS (S_map sndS i))
                (Compact
-                  (S_map (fst (B:=_))
-                     (S_map (snd (B:=_)) (S_map (snd (B:=_)) i)))
-                  (S_map (snd (B:=_))
-                     (S_map (snd (B:=_)) (S_map (snd (B:=_)) i))))) sp))).
+                  (S_map fstS
+                     (S_map sndS (S_map sndS i)))
+                  (S_map sndS
+                     (S_map sndS (S_map sndS i))))) sp))).
 cofix.
 intros i si st sp.
 apply eqS.
@@ -343,13 +343,13 @@ Section Verif_hyp.
 
   Variable i : Stream Input_type.
 
-  Let Fs := S_map (fst (B:=_)) i.
+  Let Fs := S_map fstS i.
 
-  Let Act := S_map (fst (B:=_)) (S_map (snd (B:=_)) i).
+  Let Act := S_map fstS (S_map sndS i).
 
-  Let Pri := S_map (fst (B:=_)) (S_map (snd (B:=_)) (S_map (snd (B:=_)) i)).
+  Let Pri := S_map fstS (S_map sndS (S_map sndS i)).
 
-  Let Route := S_map (snd (B:=_)) (S_map (snd (B:=_)) (S_map (snd (B:=_)) i)).
+  Let Route := S_map sndS (S_map sndS (S_map sndS i)).
 
 
   (** Hypothesis on the input signals fs and act **)
@@ -418,13 +418,13 @@ Section From_init_states.
 
   Variable i : Stream Input_type.
 
-  Let Fs := S_map (fst (B:=_)) i.
+  Let Fs := S_map fstS i.
 
-  Let Act := S_map (fst (B:=_)) (S_map (snd (B:=_)) i).
+  Let Act := S_map fstS (S_map sndS i).
 
-  Let Pri := S_map (fst (B:=_)) (S_map (snd (B:=_)) (S_map (snd (B:=_)) i)).
+  Let Pri := S_map fstS (S_map sndS (S_map sndS i)).
 
-  Let Route := S_map (snd (B:=_)) (S_map (snd (B:=_)) (S_map (snd (B:=_)) i)).
+  Let Route := S_map sndS (S_map sndS (S_map sndS i)).
 
 
   (** Hypothesis on the input signals fs and act **)
