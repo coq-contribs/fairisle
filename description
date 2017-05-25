@@ -7,12 +7,12 @@ Homepage: http://www.cmi.univ-mrs.fr/~solange/
 Homepage: http://www.dil.univ-mrs.fr/~jakubiec/
 Institution: LIF
 Address: CMI - Technopole de Chateau-Gombert 
-         39, rue Frédéric Joliot-Curie
+         39, rue FrÃ©dÃ©ric Joliot-Curie
          13453 Marseille Cedex 13 - France
-Address: Faculté des Sciences de Luminy - Département Informatique
+Address: FacultÃ© des Sciences de Luminy - DÃ©partement Informatique
          163, Avenue de Luminy
          Case 901
-         13288 Marseille Cédex 9 - France
+         13288 Marseille CÃ©dex 9 - France
 Date: 2005-12-15
 Description: This library contains the development of general definitions dedicated 
 to the verification of sequential synchronous devices (based on Moore and Mealy automata) 
