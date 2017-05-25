@@ -8,7 +8,7 @@
 (*                                                                          *)
 (*                                                                          *)
 (*             Laboratoire d'Informatique Fondamentale de Marseille         *)
-(*                   CMI et Faculté des Sciences de Luminy                  *)
+(*                   CMI et FacultÃ© des Sciences de Luminy                  *)
 (*                                                                          *)
 (*           e-mail:{Solange.Coupet,Line.Jakubiec}@lif.univ-mrs.fr          *)
 (*                                                                          *)
