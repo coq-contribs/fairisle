@@ -106,7 +106,8 @@ Section Parallel_Composition.
          (Compact (A1 (S_map fstS (S_map f i)) s1)
             (A2 (S_map sndS (S_map f i)) s2))) i s1 s2)
      (PC i (s1, s2)).
-  cofix.
+  Proof.
+  cofix Equiv_A1A2_PC.
   intros i s1 s2.
   apply eqS; simpl in |- *; auto.
   Qed.
@@ -130,7 +131,8 @@ Section Parallel_Composition.
        Compact (States_A1 (S_map fstS (S_map f i)) s1)
          (States_A2 (S_map sndS (S_map f i)) s2)) i s1 s2)
      (States_PC i (s1, s2)).
-  cofix.
+  Proof.
+  cofix Equiv_States_A1A2_PC.
   intros i s1 s2.
   apply eqS; simpl in |- *; auto.
   Qed.
@@ -191,7 +193,8 @@ Section Series_Composition.
   Lemma Equiv_A1A2_SC :
    forall (s1 : State_type_1) (s2 : State_type_2) (i : Stream Input_type),
    EqS (A2 (A1 i s1) s2) (SC i (s1, s2)).
-  cofix.
+  Proof.
+  cofix Equiv_A1A2_SC.
   intros s1 s2 i.
   apply eqS; simpl in |- *; auto.
   Qed.
@@ -278,7 +281,8 @@ Section Feedback_Composition.
   Lemma Equiv_A1A2_FC :
    forall (s1 : State_type_1) (s2 : State_type_2) (i : Stream Input_type),
    EqS (A1A2 i s1 s2) (FC i (s1, s2)).
-  cofix.
+  Proof.
+  cofix Equiv_A1A2_FC.
   intros s1 s2 i.
   apply eqS; simpl in |- *; auto.
   Qed.

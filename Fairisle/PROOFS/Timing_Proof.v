@@ -102,6 +102,7 @@ Section Timing_Correctness.
 
   Lemma equiv_out_Timing :
    forall (i : Input_type) (s : label_t), Out_Timing s = Out_Timing_Mealy i s.
+  Proof.
   auto.
   Qed.
 
@@ -109,6 +110,7 @@ Section Timing_Correctness.
   Lemma Equiv_Timing_Moore_Mealy :
    forall (s : label_t) (i : Stream Input_type),
    EqS (Behaviour_TIMING i s) (Mealy Trans_Timing Out_Timing_Mealy i s).
+  Proof.
   intros s i.
   unfold Behaviour_TIMING in |- *; unfold Out_Timing_Mealy in |- *;
    apply Equiv_Moore_Mealy.
@@ -143,7 +145,8 @@ Section Timing_Correctness.
    forall (i : Stream Input_type) (s : label_t) (l : Reg_type),
    Inv Cst_True i (States_TIMING i s) (States_Structure_TIMING i l).
 
-  cofix.
+  Proof.
+  cofix Cst_True_inv_t.
   intros i s l.
   apply Inv_Ok.
   unfold Cst_True in |- *; auto.
@@ -156,6 +159,7 @@ Section Timing_Correctness.
   Lemma Invariant_relation_t :
    Inv_under_P Trans_Timing Timing_Aux Cst_True R_Timing.
 
+  Proof.
   unfold Inv_under_P in |- *; unfold R_Timing in |- *.
   intros i s l H_True R; clear H_True; elim i; intros fs act.
   elim R; clear R.
@@ -209,6 +213,7 @@ Section Timing_Correctness.
   Lemma Output_relation_t :
    Output_rel Out_Timing_Mealy Out_Struct_Timing R_Timing.
 
+  Proof.
   unfold Output_rel in |- *; unfold R_Timing in |- *; intros i s l H.
   elim H; clear H.
   intros H1 H2.
@@ -232,6 +237,7 @@ Section Timing_Correctness.
    forall (i : Stream Input_type) (l : Reg_type) (s : label_t),
    R_Timing s l -> EqS (Behaviour_TIMING i s) (Structure_TIMING i l).
 
+  Proof.
   intros i l s HR.
   unfold Behaviour_TIMING in |- *; unfold Structure_TIMING in |- *.
   apply

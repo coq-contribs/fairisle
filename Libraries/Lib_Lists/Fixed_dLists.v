@@ -55,6 +55,7 @@ Section fixed_lists.
    e1 = e1' ->
    e2 = e2' ->
    e3 = e3' -> e4 = e4' -> List4 e1 e2 e3 e4 = List4 e1' e2' e3' e4'.
+  Proof.
   intros e1 e2 e3 e4 e1' e2' e3' e4' H0 H1 H2 H3.
   rewrite H0; rewrite H1; rewrite H2; rewrite H3; auto.
   Qed.
@@ -62,6 +63,7 @@ Section fixed_lists.
   Lemma id_list3 :
    forall e1 e2 e3 e1' e2' e3' : A,
    e1 = e1' -> e2 = e2' -> e3 = e3' -> List3 e1 e2 e3 = List3 e1' e2' e3'.
+  Proof.
   intros e1 e2 e3 e1' e2' e3' H0 H1 H2.
   rewrite H0; rewrite H1; rewrite H2; auto.
   Qed.
@@ -69,18 +71,21 @@ Section fixed_lists.
   Lemma id_list3_fst :
    forall e1 e2 e3 e1' e2' e3' : A,
    List3 e1 e2 e3 = List3 e1' e2' e3' -> e1 = e1'.
+  Proof.
   intros e1 e2 e3 e1' e2' e3' H; inversion H; try trivial.
   Qed.
 
   Lemma id_list3_scd :
    forall e1 e2 e3 e1' e2' e3' : A,
    List3 e1 e2 e3 = List3 e1' e2' e3' -> e2 = e2'.
+  Proof.
   intros e1 e2 e3 e1' e2' e3' H; inversion H; try trivial.
   Qed.
 
   Lemma id_list3_thd :
    forall e1 e2 e3 e1' e2' e3' : A,
    List3 e1 e2 e3 = List3 e1' e2' e3' -> e3 = e3'.
+  Proof.
   intros e1 e2 e3 e1' e2' e3' H; inversion H; try trivial.
   Qed.
 
@@ -93,6 +98,7 @@ Section fixed_lists.
    e4 = e4' ->
    d_cons e1 (d_cons e2 (d_cons e3 (d_cons e4 (d_nil A)))) =
    d_cons e1' (d_cons e2' (d_cons e3' (d_cons e4' (d_nil A)))).
+  Proof.
   intros e1 e2 e3 e4 e1' e2' e3' e4' H0 H1 H2 H3.
   rewrite H0; rewrite H1; rewrite H2; rewrite H3; auto.
   Qed.
@@ -100,6 +106,7 @@ Section fixed_lists.
 
   Lemma split_List2 :
    forall l : d_list A 2, l = List2 (Fst_of_l2 l) (Scd_of_l2 l).
+  Proof.
   intro l.
   elim (non_empty l).
   intros x1 X1; elim X1; clear X1.
@@ -115,15 +122,18 @@ Section fixed_lists.
 					
  
   Lemma fst_list2 : forall a b : A, a = Fst_of_l2 (List2 a b).
+  Proof.
   auto.
   Qed.
 
   Lemma scd_list2 : forall a b : A, b = Scd_of_l2 (List2 a b).
+  Proof.
   auto.
   Qed.
     
   Lemma List2_access :
    forall a b c d : A, List2 a b = List2 c d -> a = c /\ b = d.
+  Proof.
   unfold List2 in |- *; intros a b c d H; split.
   replace a with (d_Head (d_cons a (d_cons b (d_nil A)))); auto.
   replace c with (d_Head (d_cons c (d_cons d (d_nil A)))); auto.
@@ -136,6 +146,7 @@ Section fixed_lists.
 
   Lemma split_List3 :
    forall l : d_list A 3, l = List3 (Fst_of_l3 l) (Scd_of_l3 l) (Thd_of_l3 l).
+  Proof.
   intro l; elim (non_empty l).
   intros x1 X1; elim X1; clear X1.
   intros X1; elim (non_empty X1).
@@ -150,6 +161,7 @@ Section fixed_lists.
   Lemma split_List4 :
    forall l : d_list A 4,
    l = List4 (Fst_of_l4 l) (Scd_of_l4 l) (Thd_of_l4 l) (Fth_of_l4 l).
+  Proof.
   intro l.
   unfold List4 in |- *; unfold Fst_of_l3 in |- *; unfold Scd_of_l3 in |- *;
    unfold Thd_of_l3 in |- *; unfold Fth_of_l4 in |- *; 
@@ -181,6 +193,7 @@ End fixed_lists.
      (fst (Scd_of_l4 l), snd (Scd_of_l4 l))
      (fst (Thd_of_l4 l), snd (Thd_of_l4 l))
      (fst (Fth_of_l4 l), snd (Fth_of_l4 l)).
+  Proof.
   intros A B l.
   elim (non_empty l).
   intros x t; elim t; clear t.
@@ -218,6 +231,7 @@ Lemma List4_map :
  forall (A B : Set) (l : d_list A 4) (f : A -> B),
  List4 (f (d_Head l)) (f (d_Head (d_tl l))) (f (d_Head (d_tl (d_tl l))))
    (f (d_Head (d_tl (d_tl (d_tl l))))) = d_map f l.
+  Proof.
   intros A B l f.
   elim (non_empty l).
   intros x0 H0; elim H0; clear H0.
@@ -242,6 +256,7 @@ Lemma eq_List4_map :
    (f (d_Head (d_tl (d_tl (d_tl l))))) =
  List4 (g (d_Head k)) (g (d_Head (d_tl k))) (g (d_Head (d_tl (d_tl k))))
    (g (d_Head (d_tl (d_tl (d_tl k))))) -> d_map f l = d_map g k.
+  Proof.
   intros A B l k f g.
   rewrite List4_map; rewrite List4_map; auto.
   Qed.
@@ -250,6 +265,7 @@ Lemma eq_List4_map :
 Lemma tls_simpl :
  forall (A : Set) (a b : Stream A),
  tls (List2 a b) = List2 (S_tail a) (S_tail b).
+Proof.
 auto.
 Qed.
 
@@ -262,7 +278,8 @@ Lemma Eq_dlist_to_Stream_List4 :
  EqS s4 s4' ->
  EqS (dlist_to_Stream (List4 s1 s2 s3 s4))
    (dlist_to_Stream (List4 s1' s2' s3' s4')).
- cofix.
+ Proof.
+ cofix Eq_dlist_to_Stream_List4.
  intros A s1 s1' s2 s2' s3 s3' s4 s4' H1 H2 H3 H4.
  inversion_clear H1; inversion_clear H2; inversion_clear H3;
   inversion_clear H4.
@@ -278,7 +295,8 @@ Lemma Eq_dlist_to_Stream_List4 :
 Lemma S_map_Fst_of_l4 :
  forall (A : Set) (s1 s2 s3 s4 : Stream A),
  EqS (S_map (Fst_of_l4 (A:=A)) (dlist_to_Stream (List4 s1 s2 s3 s4))) s1.
-cofix.
+Proof.
+cofix S_map_Fst_of_l4.
 intros A s1 s2 s3 s4.
 apply eqS; simpl in |- *; auto.
 unfold tls in |- *; simpl in |- *.
@@ -288,7 +306,8 @@ Qed.
 Lemma S_map_Scd_of_l4 :
  forall (A : Set) (s1 s2 s3 s4 : Stream A),
  EqS (S_map (Scd_of_l4 (A:=A)) (dlist_to_Stream (List4 s1 s2 s3 s4))) s2.
-cofix.
+Proof.
+cofix S_map_Scd_of_l4.
 intros A s1 s2 s3 s4.
 apply eqS; simpl in |- *; auto.
 unfold tls in |- *; simpl in |- *.
@@ -298,7 +317,8 @@ Qed.
 Lemma S_map_Thd_of_l4 :
  forall (A : Set) (s1 s2 s3 s4 : Stream A),
  EqS (S_map (Thd_of_l4 (A:=A)) (dlist_to_Stream (List4 s1 s2 s3 s4))) s3.
-cofix.
+Proof.
+cofix S_map_Thd_of_l4.
 intros A s1 s2 s3 s4.
 apply eqS; simpl in |- *; auto.
 unfold tls in |- *; simpl in |- *.
@@ -308,7 +328,8 @@ Qed.
 Lemma S_map_Fth_of_l4 :
  forall (A : Set) (s1 s2 s3 s4 : Stream A),
  EqS (S_map (Fth_of_l4 (A:=A)) (dlist_to_Stream (List4 s1 s2 s3 s4))) s4.
-cofix.
+Proof.
+cofix S_map_Fth_of_l4.
 intros A s1 s2 s3 s4.
 apply eqS; simpl in |- *; auto.
 unfold tls in |- *; simpl in |- *.
@@ -320,6 +341,7 @@ Lemma simplification1 :
  hds (tls (List3 (S_Fst_of_l2 s1) (S_Scd_of_l2 s2) (S_Fst_of_l2 s3))) =
  List3 (Fst_of_l2 (S_head (S_tail s1))) (Scd_of_l2 (S_head (S_tail s2)))
    (Fst_of_l2 (S_head (S_tail s3))).
+Proof.
 auto.
 Qed.
 
@@ -333,6 +355,7 @@ Lemma simplification2 :
             (S_Scd_of_l2 s4)))) =
  List3 (Fst_of_l2 (S_head (S_tail s1))) (Scd_of_l2 (S_head (S_tail s2)))
    (Fst_of_l2 (S_head (S_tail s3))).
+Proof.
 auto.
 Qed.
 
@@ -342,6 +365,7 @@ Lemma simplification3 :
  tls (tls (List3 (S_Fst_of_l2 s1) (S_Scd_of_l2 s2) (S_Fst_of_l2 s3))) =
  List3 (S_Fst_of_l2 (S_tail (S_tail s1))) (S_Scd_of_l2 (S_tail (S_tail s2)))
    (S_Fst_of_l2 (S_tail (S_tail s3))).
+Proof.
 auto.
 Qed.
 
@@ -352,6 +376,7 @@ Lemma Unfold_tls_4 :
  d_cons (S_tail a)
    (d_cons (S_tail b)
       (d_cons (S_tail c) (d_cons (S_tail d) (d_nil (Stream A))))).
+ Proof.
  unfold tls in |- *; simpl in |- *; auto.
  Qed.
 
@@ -366,7 +391,8 @@ Lemma transf_simpl :
  forall (A : Set) (s1 s2 s3 s4 : Stream A),
  EqS (transf (dlist_to_Stream (List4 s1 s2 s3 s4)))
    (Compact (Compact s1 s2) (Compact s3 s4)).
-cofix.
+Proof.
+cofix transf_simpl.
 intros A s1 s2 s3 s4.
 apply eqS; simpl in |- *.
 unfold hds in |- *; simpl in |- *.
@@ -381,7 +407,8 @@ Qed.
 Lemma EqS_transf :
  forall (A : Set) (s1 s2 : Stream (d_list A 4)),
  EqS s1 s2 -> EqS (transf s1) (transf s2).
-cofix.
+Proof.
+cofix EqS_transf.
 intros A s1 s2 H.
 inversion_clear H.
 apply eqS; simpl in |- *.
@@ -423,7 +450,8 @@ Lemma equiv1 :
  EqS l l' ->
  EqS (S_map (transf2 (A:=d_list bool 3)) (transf3 l'))
    (S_map (transf2 (A:=d_list bool 3)) (transf3 l)).
-  cofix.
+  Proof.
+  cofix equiv1.
   intros.
   apply eqS; simpl in |- *.
   inversion_clear H.
@@ -449,7 +477,8 @@ Lemma equiv2 :
  EqS s4 s4' ->
  EqS (dlist_to_Stream (List4 s1 s2 s3 s4))
    (dlist_to_Stream (List4 s1' s2' s3' s4')).
- cofix.
+ Proof.
+ cofix equiv2.
  intros A s1 s1' s2 s2' s3 s3' s4 s4' H1 H2 H3 H4.
  inversion_clear H1; inversion_clear H2; inversion_clear H3;
   inversion_clear H4.

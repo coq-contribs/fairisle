@@ -160,6 +160,7 @@ Definition dmap_Stream_to_dlist (A : Set) (n : nat) :=
 
 Lemma EqS_trans :
  forall (A : Set) (s1 s2 s3 : Stream A), EqS s1 s2 -> EqS s2 s3 -> EqS s1 s3.
+Proof.
 cofix u.
 intros.
 apply eqS.
@@ -181,6 +182,7 @@ Qed.
 
 
 Lemma EqS_reflex : forall (A : Set) (s : Stream A), EqS s s.
+Proof.
 cofix u.
 intros.
 apply eqS.
@@ -190,6 +192,7 @@ Qed.
 
 
 Lemma EqS_sym : forall (A : Set) (s s' : Stream A), EqS s s' -> EqS s' s.
+Proof.
 cofix u.
 intros.
 case H.
@@ -205,7 +208,8 @@ Qed.
 Lemma S_map_id :
  forall (A : Set) (id : A -> A) (s : Stream A),
  (forall a : A, id a = a) -> EqS s (S_map id s).
-cofix.
+Proof.
+cofix S_map_id.
 intros A id s H.
 apply eqS; simpl in |- *; auto.
 Qed.
@@ -214,7 +218,8 @@ Qed.
 Lemma S_map_f :
  forall (A B : Set) (f : A -> B) (s s' : Stream A),
  EqS s s' -> EqS (S_map f s) (S_map f s').
-cofix.
+Proof.
+cofix S_map_f.
 intros A B f s s' H.
 inversion_clear H.
 apply eqS; simpl in |- *.
@@ -303,7 +308,8 @@ Definition S_Fth_of_4 (A B C D : Set) (s : Stream (A * (B * (C * D)))) :=
 Lemma EqS_S_Thd_of_3 :
  forall (A B C : Set) (s s' : Stream (A * (B * C))),
  EqS s s' -> EqS (S_Thd_of_3 s) (S_Thd_of_3 s').
-cofix.
+Proof.
+cofix EqS_S_Thd_of_3.
 intros.
 inversion_clear H.
 apply eqS; simpl in |- *.
@@ -314,7 +320,8 @@ Qed.
 Lemma EqS_S_Snd_of_3 :
  forall (A B C : Set) (s s' : Stream (A * (B * C))),
  EqS s s' -> EqS (S_Snd_of_3 s) (S_Snd_of_3 s').
-cofix.
+Proof.
+cofix EqS_S_Snd_of_3.
 intros.
 inversion_clear H.
 apply eqS; simpl in |- *.
@@ -348,7 +355,8 @@ Definition S_Two_Fst (A B C : Set) (s : Stream (A * (B * C))) :
 Lemma EqS_Compact :
  forall (A B : Set) (s1 s1' : Stream A) (s2 s2' : Stream B),
  EqS s1 s1' -> EqS s2 s2' -> EqS (Compact s1 s2) (Compact s1' s2').
-cofix.
+Proof.
+cofix EqS_Compact.
 intros A B s1 s1' s2 s2' H1 H2.
 inversion_clear H1; inversion_clear H2.
 apply eqS; simpl in |- *.
@@ -360,7 +368,8 @@ Qed.
 Lemma Fst_Compact :
  forall (A B : Set) (s1 : Stream A) (s2 : Stream B),
  EqS (S_map fstS (Compact s1 s2)) s1.
-cofix.
+Proof.
+cofix Fst_Compact.
 intros A B s1 s2.
 apply eqS; simpl in |- *; auto.
 Qed.
@@ -368,7 +377,8 @@ Qed.
 Lemma Snd_Compact :
  forall (A B : Set) (s1 : Stream A) (s2 : Stream B),
  EqS (S_map sndS (Compact s1 s2)) s2.
-cofix.
+Proof.
+cofix Snd_Compact.
 intros A B s1 s2.
 apply eqS; simpl in |- *; auto.
 Qed.
@@ -376,7 +386,8 @@ Qed.
 Lemma S_Snd_of_3_Compact :
  forall (A B C : Set) (s1 : Stream A) (s2 : Stream B) (s3 : Stream C),
  EqS (S_Snd_of_3 (Compact s1 (Compact s2 s3))) s2.
-cofix.
+Proof.
+cofix S_Snd_of_3_Compact.
 intros A B C s1 s2 s3.
 apply eqS; simpl in |- *; auto.
 unfold S_Snd_of_3 in S_Snd_of_3_Compact; auto.
@@ -385,7 +396,8 @@ Qed.
 Lemma S_Thd_of_3_Compact :
  forall (A B C : Set) (s1 : Stream A) (s2 : Stream B) (s3 : Stream C),
  EqS (S_Thd_of_3 (Compact s1 (Compact s2 s3))) s3.
-cofix.
+Proof.
+cofix S_Thd_of_3_Compact.
 intros A B C s1 s2 s3.
 apply eqS; simpl in |- *; auto.
 unfold S_Thd_of_3 in S_Thd_of_3_Compact; auto.
@@ -398,12 +410,14 @@ Qed.
 Lemma S_tail_S_map :
  forall (A B : Set) (f : A -> B) (s : Stream A),
  S_tail (S_map f s) = S_map f (S_tail s).
+Proof.
 auto.
 Qed.
 
 Lemma S_head_S_map :
  forall (A B : Set) (f : A -> B) (s : Stream A),
  S_head (S_map f s) = f (S_head s).
+Proof.
 auto.
 Qed.
 
@@ -411,18 +425,21 @@ Qed.
 Lemma S_tail_dlist_to_Stream :
  forall (A : Set) (n : nat) (l : d_list (Stream A) n),
  S_tail (dlist_to_Stream l) = dlist_to_Stream (tls l).
+Proof.
 auto.
 Qed.
 
 Lemma S_tail_Compact :
  forall (A B : Set) (s1 : Stream A) (s2 : Stream B),
  S_tail (Compact s1 s2) = Compact (S_tail s1) (S_tail s2).
+Proof.
 auto.
 Qed.
 
 Lemma S_head_Compact :
  forall (A B : Set) (s1 : Stream A) (s2 : Stream B),
  S_head (Compact s1 s2) = (S_head s1, S_head s2).
+Proof.
 auto.
 Qed.
 

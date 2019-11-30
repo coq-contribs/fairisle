@@ -67,7 +67,8 @@ Section Equiv_on_rule_PC.
      (B2 (S_map sndS (S_map f i')) sb2) ->
    EqS (PC Transa1 Transa2 Outa1 Outa2 f output i (sa1, sa2))
      (PC Transb1 Transb2 Outb1 Outb2 f output i' (sb1, sb2)).
-  cofix.
+  Proof.
+  cofix equiv_PC.
   unfold fstS, sndS.
   intros i i' sa1 sa2 sb1 sb2 H1 H2 H3.
   inversion_clear H1.
@@ -119,7 +120,8 @@ Section Equiv_on_rule_SC.
   EqS (A2 (A1 i sa1) sa2) (B2 (B1 i sb1) sb2) ->
   EqS (SC Transa1 Transa2 Outa1 Outa2 i (sa1, sa2))
     (SC Transb1 Transb2 Outb1 Outb2 i (sb1, sb2)).
-  cofix.
+  Proof.
+  cofix equiv_SC.
   intros i sa1 sa2 sb1 sb2 H.
   inversion_clear H.
   simpl in H0.
@@ -145,7 +147,8 @@ Section Equiv_on_rule_SC.
    EqS k k' ->
    EqS (SC Transa1 Transa2 Outa1 Outa2 k (sa1, sa2))
      (SC Transb1 Transb2 Outb1 Outb2 k' (sb1, sb2)).
-  cofix.
+  Proof.
+  cofix equiv_SC'.
   intros sa1 sa2 sb1 sb2 H0 H1 k k' H2.
   apply eqS.
   simpl in |- *.
@@ -203,6 +206,7 @@ Section output_is_identity.
      (Compact (A1 (S_map fstS (S_map f i)) s1)
         (A2 (S_map sndS (S_map f i)) s2))
      (PC Trans1 Trans2 Out1 Out2 f output i (s1, s2)).
+  Proof.
   intros i s1 s2.
   apply
    EqS_trans
@@ -225,7 +229,8 @@ Section output_is_identity.
   Lemma S_map_output :
    forall s1 s2 : Stream (Output_type_1 * Output_type_2),
    EqS s1 s2 -> EqS (S_map output s1) (S_map output s2).
-  cofix.
+  Proof.
+  cofix S_map_output.
   intros s1 s2 H.
   inversion_clear H.
   apply eqS; simpl in |- *.
@@ -246,6 +251,7 @@ Lemma S_tail_States_PC :
    (i : Stream Input_type) (spc : State_type_a1 * State_type_a2),
  S_tail (States_PC t1 t2 f i spc) =
  States_PC t1 t2 f (S_tail i) (Trans_PC t1 t2 f (S_head i) spc).
+Proof.
 auto.
 Qed.
 
@@ -258,6 +264,7 @@ Lemma S_head_States_PC :
    (f : Input_type -> Input_type_1 * Input_type_2) 
    (i : Stream Input_type) (spc : State_type_a1 * State_type_a2),
  S_head (States_PC t1 t2 f i spc) = spc.
+Proof.
 auto.
 Qed.
 
@@ -271,7 +278,8 @@ Lemma Equiv_States_PC :
    (i i' : Stream Input_type) (spc spc' : State_type_a1 * State_type_a2),
  spc = spc' ->
  EqS i i' -> EqS (States_PC t1 t2 f i spc) (States_PC t1 t2 f i' spc').
-cofix.
+Proof.
+cofix Equiv_States_PC.
 intros.
 inversion_clear H0.
 apply eqS.
@@ -292,6 +300,7 @@ Lemma S_tail_States_SC :
    (i : Stream Input_type) (ssc : State_type_a1 * State_type_a2),
  S_tail (States_SC t1 t2 out1 i ssc) =
  States_SC t1 t2 out1 (S_tail i) (Trans_SC t1 t2 out1 (S_head i) ssc).
+Proof.
 auto.
 Qed.
 
@@ -303,6 +312,7 @@ Lemma S_head_States_SC :
    (out1 : Input_type -> State_type_a1 -> Output_type_1)
    (i : Stream Input_type) (ssc : State_type_a1 * State_type_a2),
  S_head (States_SC t1 t2 out1 i ssc) = ssc.
+Proof.
 auto.
 Qed.
 
@@ -315,7 +325,8 @@ Lemma States_SC_simpl :
    (i : Stream Input_type) (s1 : State_type_a1) (s2 : State_type_a2),
  EqS (S_map fstS (States_SC t1 t2 out1 i (s1, s2)))
    (States_Mealy t1 i s1).
-cofix.
+Proof.
+cofix States_SC_simpl.
 intros.
 apply eqS.
 simpl in |- *; auto.
@@ -366,9 +377,9 @@ Section Tool_about_Lemma_on_rules.
         (sa1, sa2))
      (Mealy (Trans_PC Transb1 Transb2 f) (Out_PC Outb1 Outb2 f output) i'
         (sb1, sb2)).
+  Proof.
   auto.
   Qed.
 
 
 End Tool_about_Lemma_on_rules.
-

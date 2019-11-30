@@ -104,7 +104,8 @@ Section Particular_Parallel_Composition.
             (List2 (S1 (S_map fstS (S_map f i)) s1)
                (S1 (S_map sndS (S_map f i)) s1')))) i s1 s1')
      (PC_part i (s1, s1')).
-  cofix.
+  Proof.
+  cofix Equiv_S1S1_PC_part.
   intros i s1 s1'.
   apply eqS.
   simpl in |- *; auto.

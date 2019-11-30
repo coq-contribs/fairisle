@@ -59,7 +59,8 @@ Section Timing_Arbiter_Proof.
  Lemma eqS_Inv_P_Timing :
   forall (i i' : Stream bool) (s s' : Stream label_t),
   EqS i i' -> EqS s s' -> Inv_P_Timing i' s' -> Inv_P_Timing i s.
-  cofix.
+  Proof.
+  cofix eqS_Inv_P_Timing.
   intros i i' s s' H_i H_s H_P.
   inversion_clear H_i.
   inversion_clear H_s.
@@ -75,6 +76,7 @@ Section Timing_Arbiter_Proof.
   Lemma eq_fs_and_RouteE_false :
    forall (e : bool * d_list bool 4) (s : label_t),
    P_Timing (fst e) (Trans_Timing e s).
+ Proof.
  unfold P_Timing in |- *.
  intros e s; elim e; clear e; intros fs act.
  elim (Lib_Bool.bool_dec fs); intros H_fs.
@@ -86,12 +88,13 @@ Section Timing_Arbiter_Proof.
 
  Lemma Is_Inv_P_Timing :
   forall s : label_t, Inv_P_Timing Fs (States_TIMING (Compact Fs Act) s).
+ Proof.
  intro s.
  apply C_Inv_t.
  simpl in |- *; rewrite fs_0; unfold P_Timing in |- *; auto.
  generalize Fs Act s fs_act_signals.
  clear fs_act_signals fs_0 s Act Fs.
- cofix.
+ cofix Is_Inv_P_Timing.
  intros fs act s H_sig.
  inversion_clear H_sig.
  apply C_Inv_t.
@@ -135,6 +138,7 @@ Definition Inv_t_a4 (s_a4 : STATE_a4) (st : label_t) :=
 Lemma Inv_Init_states_t_a4 :
  forall (g : d_list (bool * bool) 4) (o : d_list bool 4),
  Inv_t_a4 (WAIT_a4, (g, o)) START_t.
+Proof.
 unfold Inv_t_a4 in |- *; intros g o; do 3 right; auto.
 Qed.
 
@@ -146,6 +150,7 @@ Lemma Inv_t_a4_Ok :
  Inv_t_a4 sa4 st ->
  Inv_t_a4 (Trans_Four_Arbiters (fs, (Out_Timing st, ltReq)) sa4)
    (Trans_Timing (fs, act) st).
+Proof.
 unfold Inv_t_a4 at 1 in |- *.
 intros sa4 st fs' act' ltReq'; elim sa4; clear sa4.
 intros sa4 g P H.
@@ -188,6 +193,7 @@ Lemma P_a4_inv :
    (old_a4 : d_list bool 2 * bool * (d_list bool 2 * bool) *
              (d_list bool 2 * bool * (d_list bool 2 * bool))),
  Inv_t_a4 sa4 st -> P_a4 (fs, (Out_Timing st, ltReq)) sa4 old_a4.
+Proof.
 unfold Inv_t_a4 in |- *; unfold P_a4 in |- *.
 intros sa4 st fs' ltReq' old_a4; clear fs' ltReq' old_a4.
 elim sa4; clear sa4; simpl in |- *.
@@ -232,10 +238,11 @@ Lemma Inv_a4 :
    (Structure_States_FOUR_ARBITERS
       (Compact Fs (Compact (Behaviour_TIMING (Compact Fs Act) st) ltReq))
       old_a4).
+Proof.
 intros sa st old_a4 ltReq H_I.
 generalize (Is_Inv_P_Timing st).
 generalize sa st old_a4 Fs Act ltReq H_I.
-cofix.
+cofix Inv_a4.
 intros sa' st' old_a4' fs' act' ltReq' H_I' H_P'.
 inversion_clear H_P'.
 apply C_Inv.
@@ -283,6 +290,7 @@ Lemma S_tail_Behaviour_TIMINGPDECODE_ID :
    (s : state_id * (label_t * STATE_p)),
  S_tail (Behaviour_TIMINGPDECODE_ID i s) =
  Behaviour_TIMINGPDECODE_ID (S_tail i) (Trans_TimingPDecode_Id (S_head i) s).
+Proof.
 auto.
 Qed.
 
@@ -306,7 +314,8 @@ Lemma Equiv_Behaviour_TIMINGPDECODE_ID :
                      (S_map sndS (S_map sndS i)))
                   (S_map sndS
                      (S_map sndS (S_map sndS i))))) sp))).
-cofix.
+Proof.
+cofix Equiv_Behaviour_TIMINGPDECODE_ID.
 intros i si st sp.
 apply eqS.
 clear Equiv_Behaviour_TIMINGPDECODE_ID; simpl in |- *.
@@ -370,6 +379,7 @@ Lemma Inv_a4' :
    (States_FOUR_ARBITERS (Behaviour_TIMINGPDECODE_ID i (si, (st, sp))) sa4)
    (Structure_States_FOUR_ARBITERS
       (Behaviour_TIMINGPDECODE_ID i (si, (st, sp))) ra4).
+Proof.
 intros si st sp sa4 ra4 HI.
 
 generalize
@@ -451,6 +461,7 @@ Lemma P_a4_Ok :
       (pdt_List2 g11_0, false, (pdt_List2 g12_0, false),
       (pdt_List2 g21_0, false, (pdt_List2 g22_0, false)))).
 
+Proof.
 apply Inv_a4'; auto.
 apply Inv_Init_states_t_a4.
 Qed.

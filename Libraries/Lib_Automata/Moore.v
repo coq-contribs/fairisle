@@ -50,6 +50,7 @@ Lemma S_tail_Moore :
    (out : State_type -> Output_type) (i : Stream Input_type) 
    (s : State_type),
  S_tail (Moore t out i s) = Moore t out (S_tail i) (t (S_head i) s).
+Proof.
 auto.
 Qed.
 
@@ -58,6 +59,7 @@ Lemma S_head_Moore :
    (t : Input_type -> State_type -> State_type)
    (out : State_type -> Output_type) (i : Stream Input_type) 
    (s : State_type), S_head (Moore t out i s) = out s.
+Proof.
 auto.
 Qed.
 
@@ -68,7 +70,8 @@ Lemma EqS_Moore :
    (out : State_type -> Output_type) (i1 i2 : Stream Input_type)
    (s1 s2 : State_type),
  s1 = s2 -> EqS i1 i2 -> EqS (Moore t out i1 s1) (Moore t out i2 s2).
-cofix.
+Proof.
+cofix EqS_Moore.
 intros Input_type o State_type t out i1 i2 s1 s2 H1 H2.
 inversion_clear H2.
 apply eqS.

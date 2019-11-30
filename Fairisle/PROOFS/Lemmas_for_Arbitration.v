@@ -42,7 +42,8 @@ Lemma Inv_P_Timing_Inv_A :
    (sitpa4 : Stream (state_id * (label_t * STATE_p) * STATE_a4)),
  Inv_P_Timing (S_map fstS i) (S_Snd_of_3 (S_map fstS sitpa4)) ->
  Inv P_A i sA sitpa4.
-cofix.
+Proof.
+cofix Inv_P_Timing_Inv_A.
 intros i sA sitpa4 H_p.
 inversion_clear H_p.
 apply C_Inv.
@@ -77,7 +78,8 @@ Qed.
            (bool *
             (d_list bool 4 * (d_list bool 4 * d_list (d_list bool 2) 4))),
    EqS (S_map sndS (S_map f_tpi i)) i.
-  cofix.
+  Proof.
+  cofix S_Snd_S_f_tpi_simpl.
   intro i'.
   apply eqS; simpl in |- *.
   unfold f_tpi in |- *.
@@ -95,7 +97,8 @@ Qed.
    EqS (S_map fstS (S_map f_tp i))
      (Compact (S_map fstS i)
         (S_map fstS (S_map sndS i))).
-  cofix.
+  Proof.
+  cofix S_Fst_S_f_tp_simpl.
   intro.
   apply eqS.
   simpl in |- *; auto.
@@ -122,6 +125,7 @@ Qed.
         (Compact (S_map fstS i)
            (S_map fstS (S_map sndS i))) st).
 
+  Proof.
   intros i si st sp sa4.
   unfold States_Beh_SC_ARBITRATION in |- *.
   apply

@@ -70,6 +70,7 @@ End Identity.
 Lemma S_tail_Behaviour_IDENTITY :
  forall (Input_type : Set) (i : Stream Input_type) (si : state_id),
  S_tail (Behaviour_IDENTITY i si) = Behaviour_IDENTITY (S_tail i) si.
+Proof.
 auto.
 Qed.
 
@@ -77,7 +78,8 @@ Qed.
 Lemma EqS_IDENTITY :
  forall (Input_type : Set) (i : Stream Input_type) (si : state_id),
  EqS (Behaviour_IDENTITY i si) i.
-cofix.
+Proof.
+cofix EqS_IDENTITY.
 intros Input_type i si.
 apply eqS.
 simpl in |- *; auto.

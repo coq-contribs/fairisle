@@ -55,7 +55,8 @@ Section Equivalence_Moore_to_Mealy1.
   Lemma Equiv_Moore_Mealy :
    forall (i : Stream Input_type) (s : state_type),
    EqS (A_Moore i s) (A_Mealy i s).
-  cofix.
+  Proof.
+  cofix Equiv_Moore_Mealy.
   intros i s.
   apply eqS; simpl in |- *; auto.
   Qed.
@@ -91,12 +92,13 @@ Section Equivalence_Mealy_to_Moore1.
      (s_Mealy : State_type_Mealy),
    EqS (A_Moore i (Trans_Mealy i0 s_Mealy, Out_Mealy i0 s_Mealy))
      (A_Mealy (S_cons i0 i) s_Mealy).
+Proof.
 intros i0 i s_Mealy.
 apply eqS.
 simpl in |- *; auto.
 generalize i0 i s_Mealy.
 clear i0 i s_Mealy.
-cofix.
+cofix Equiv_Mealy_Moore.
 intros.
 apply eqS.
 simpl in |- *; auto.
@@ -108,7 +110,8 @@ Qed.
 
 Lemma EqS_const_stream :
  forall (A : Set) (i : Stream A), EqS (S_cons (S_head i) (S_tail i)) i.
-cofix.
+Proof.
+cofix EqS_const_stream.
 intros.
 apply eqS; simpl in |- *; auto.
 apply EqS_reflex.
@@ -143,11 +146,12 @@ Section Equivalence_Moore_to_Mealy2.
    {Trans_Mealy : Input_type -> State_type -> State_type & 
    {Out_Mealy : Input_type -> State_type -> Output_type |
    EqS (A_Moore i s_Moore) (Mealy Trans_Mealy Out_Mealy i s_Mealy)}}}.
+  Proof.
   intros i s_Moore.
   exists s_Moore.
   exists Trans_Mealy; exists Out_Mealy2.
   generalize i s_Moore.
-  cofix.
+  cofix a_Mealy.
   clear s_Moore i.
   intros i s_Moore.
   apply eqS; simpl in |- *; auto.
@@ -184,6 +188,7 @@ Section Equivalence_Mealy_to_Moore2.
   {Trans_Moore : Input_type -> State_type_Moore -> State_type_Moore & 
   {Out_Moore : State_type_Moore -> Output_type |
   EqS (Moore Trans_Moore Out_Moore i s_Moore) (A_Mealy (S_cons i0 i) s_Mealy)}}}.
+ Proof.
  intros i0 i s_Mealy.
  exists (Trans_Mealy i0 s_Mealy, Out_Mealy i0 s_Mealy); exists Trans_Moore;
   exists Out_Moore.
@@ -191,7 +196,7 @@ Section Equivalence_Mealy_to_Moore2.
  simpl in |- *; auto.
  generalize i0 i s_Mealy.
  clear i0 i s_Mealy.
- cofix.
+ cofix A_Moore.
  intros i0 i s_Mealy.
  apply eqS.
  simpl in |- *; auto.

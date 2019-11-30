@@ -85,7 +85,8 @@ End Projections_on_fixed_dlists.
 Lemma EqS_S_Fst_of_l4 :
  forall (A : Set) (s1 s2 : Stream (d_list A 4)),
  EqS s1 s2 -> EqS (S_map (Fst_of_l4 (A:=A)) s1) (S_map (Fst_of_l4 (A:=A)) s2).
-cofix.
+Proof.
+cofix EqS_S_Fst_of_l4.
 intros A s1 s2 H.
 inversion_clear H.
 apply eqS; simpl in |- *.
@@ -96,7 +97,8 @@ Qed.
 Lemma EqS_S_Scd_of_l4 :
  forall (A : Set) (s1 s2 : Stream (d_list A 4)),
  EqS s1 s2 -> EqS (S_map (Scd_of_l4 (A:=A)) s1) (S_map (Scd_of_l4 (A:=A)) s2).
-cofix.
+Proof.
+cofix EqS_S_Scd_of_l4.
 intros A s1 s2 H.
 inversion_clear H.
 apply eqS; simpl in |- *.
@@ -107,7 +109,8 @@ Qed.
 Lemma EqS_S_Thd_of_l4 :
  forall (A : Set) (s1 s2 : Stream (d_list A 4)),
  EqS s1 s2 -> EqS (S_map (Thd_of_l4 (A:=A)) s1) (S_map (Thd_of_l4 (A:=A)) s2).
-cofix.
+Proof.
+cofix EqS_S_Thd_of_l4.
 intros A s1 s2 H.
 inversion_clear H.
 apply eqS; simpl in |- *.
@@ -118,7 +121,8 @@ Qed.
 Lemma EqS_S_Fth_of_l4 :
  forall (A : Set) (s1 s2 : Stream (d_list A 4)),
  EqS s1 s2 -> EqS (S_map (Fth_of_l4 (A:=A)) s1) (S_map (Fth_of_l4 (A:=A)) s2).
-cofix.
+Proof.
+cofix EqS_S_Fth_of_l4.
 intros A s1 s2 H.
 inversion_clear H.
 apply eqS; simpl in |- *.

@@ -91,7 +91,8 @@ Section Equivalence_2_Mealy.
   Lemma Inv_Ok :
    forall (i : Stream Input_type) (s1 : Stream State_type_1)
      (s2 : Stream State_type_2), Inv i s1 s2.
-  cofix.
+  Proof.
+  cofix Inv_Ok.
   intros i s1 s2.
   apply C_Inv; auto.
   Qed.
@@ -124,7 +125,8 @@ Section Equivalence_2_Mealy.
    forall (i : Stream Input_type) (s1 : State_type_1) (s2 : State_type_2),
    Inv i (States_A1 i s1) (States_A2 i s2) ->
    R s1 s2 -> EqS (A1 i s1) (A2 i s2).
-  cofix.
+  Proof.
+  cofix Equiv_2_Mealy.
   intros H_Inv_under_P H_Output_rel i s1 s2 H_Inv H_R.
   inversion_clear H_Inv.
   apply eqS; simpl in |- *.
@@ -160,6 +162,7 @@ Lemma S_tail_Mealy :
    (out : Input_type -> State_type -> o) (i : Stream Input_type)
    (s : State_type),
  S_tail (Mealy t out i s) = Mealy t out (S_tail i) (t (S_head i) s).
+Proof.
 auto.
 Qed.
 
@@ -168,6 +171,7 @@ Lemma S_tail_States_Mealy :
    (t : Input_type -> State_type -> State_type) (i : Stream Input_type)
    (s : State_type),
  S_tail (States_Mealy t i s) = States_Mealy t (S_tail i) (t (S_head i) s).
+Proof.
 auto.
 Qed.
 
@@ -176,6 +180,7 @@ Lemma S_head_States_Mealy :
  forall (Input_type State_type : Set)
    (t : Input_type -> State_type -> State_type) (i : Stream Input_type)
    (s : State_type), S_head (States_Mealy t i s) = s.
+Proof.
 auto.
 Qed.
 
@@ -186,7 +191,8 @@ Lemma EqS_Mealy :
    (out : Input_type -> State_type -> Output_type)
    (i1 i2 : Stream Input_type) (s1 s2 : State_type),
  s1 = s2 -> EqS i1 i2 -> EqS (Mealy t out i1 s1) (Mealy t out i2 s2).
-cofix.
+Proof.
+cofix EqS_Mealy.
 intros Input_type o State_type t out i1 i2 s1 s2 H1 H2.
 inversion_clear H2.
 apply eqS.
@@ -201,7 +207,8 @@ Lemma EqS_States_Mealy :
    (t : Input_type -> State_type -> State_type) (i1 i2 : Stream Input_type)
    (s1 s2 : State_type),
  s1 = s2 -> EqS i1 i2 -> EqS (States_Mealy t i1 s1) (States_Mealy t i2 s2).
-cofix.
+Proof.
+cofix EqS_States_Mealy.
 intros Input_type State_type t i1 i2 s1 s2 H1 H2.
 inversion_clear H2.
 apply eqS.
@@ -221,7 +228,8 @@ Section Equiv_about_P.
    forall (i i' : Stream Input_type) (s1 s1' : Stream State_type_1)
      (s2 s2' : Stream State_type_2),
    EqS i i' -> EqS s1 s1' -> EqS s2 s2' -> Inv P i' s1' s2' -> Inv P i s1 s2.
-  cofix.
+  Proof.
+  cofix eqS_about_P.
   intros i i' s1 s1' s2 s2' H_i H_s1 H_s2 H_P.
   inversion_clear H_i.
   inversion_clear H_s1.
@@ -250,7 +258,8 @@ Section Tool_about_Equivalence_2_Mealy.
   Lemma Equiv_2_Mealy_tool :
    forall (i i' : Stream Input_type) (s1 : State_type_1) (s2 : State_type_2),
    EqS (A1 i s1) (A2 i s2) -> EqS i i' -> EqS (A1 i s1) (A2 i' s2).
-  cofix.
+  Proof.
+  cofix Equiv_2_Mealy_tool.
   intros i i' s1 s2 H0 H1.
   inversion_clear H0.
   inversion_clear H1.

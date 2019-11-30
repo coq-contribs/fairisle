@@ -84,6 +84,7 @@ Section PriorityDecode_Correctness.
   Lemma equiv_out_PriorityDecode :
    forall (i : Input_type) (s : STATE_p),
    Out_PriorityDecode s = Out_PriorityDecode_Mealy i s.
+  Proof.
   auto.
   Qed.
 
@@ -92,6 +93,7 @@ Section PriorityDecode_Correctness.
    forall (s : STATE_p) (i : Stream Input_type),
    EqS (Behaviour_PRIORITY_DECODE i s)
      (Mealy Trans_PriorityDecode Out_PriorityDecode_Mealy i s).
+  Proof.
   intros s i.
   unfold Behaviour_PRIORITY_DECODE in |- *;
    unfold Out_PriorityDecode_Mealy in |- *; apply Equiv_Moore_Mealy.
@@ -121,7 +123,8 @@ Section PriorityDecode_Correctness.
    Inv Cst_True i (States_PRIORITY_DECODE i s)
      (States_Structure_PRIORITY_DECODE i reg).
 
-  cofix.
+  Proof.
+  cofix Cst_True_inv_pdecode.
   intros i s reg.
   apply Inv_Ok.
   unfold Cst_True in |- *; auto.
@@ -140,6 +143,7 @@ Section PriorityDecode_Correctness.
   Lemma Output_relation_p :
    Output_rel Out_PriorityDecode_Mealy Out_priority_decode R_Priority_Decode.
 
+  Proof.
   unfold Output_rel in |- *; auto.
   Qed.
 
@@ -151,6 +155,7 @@ Section PriorityDecode_Correctness.
    R_Priority_Decode s reg ->
    EqS (Behaviour_PRIORITY_DECODE i s) (Structure_PRIORITY_DECODE i reg).
 
+  Proof.
   intros i reg s HR.
   unfold Structure_PRIORITY_DECODE in |- *;
    unfold Behaviour_PRIORITY_DECODE in |- *.
